@@ -100,6 +100,18 @@ extension ISBN: Codable {
 
 extension ISBN: Sendable {}
 
+extension ISBN: LosslessStringConvertible {
+    public var description: String {
+        isbnString
+    }
+}
+
+extension ISBN: Equatable {
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.isbnString == rhs.isbnString
+    }
+}
+
 extension ISBN {
     public struct Elements: Sendable {
         /// The prefix element of the ISBN; either 978 or 979
