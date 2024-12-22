@@ -16,6 +16,12 @@ func hyphenation() throws {
     #expect(ISBN.hyphenated(9781781100769) == "978-1-78110-076-9")
 }
 
+@Test("Ensure ISBN10 with X check digit works")
+func isbn10WithXCheckDigit() throws {
+    let isbn = try #require(ISBN("1-5266-4665-X"))
+    #expect(isbn.isbnString == "978-1-5266-4665-1")
+}
+
 @Test("Ensure each element of the ISBN is correct")
 func elements() throws {
     let isbn = try #require(ISBN("978-1-4088-5589-8"))
@@ -30,4 +36,10 @@ func elements() throws {
 func groupName() async throws {
     let isbn = try #require(ISBN("978-1-4088-5589-8"))
     #expect(isbn.groupName == "English language")
+}
+
+@Test("GTIN13")
+func gtin13() async throws {
+    let isbn = try #require(ISBN("978-1-4088-5589-8"))
+    #expect(isbn.gtin == 9781408855898)
 }
