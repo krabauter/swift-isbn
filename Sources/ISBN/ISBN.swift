@@ -30,7 +30,7 @@ public struct ISBN {
         groupName = registrationGroup.name
         self.elements = elements
         isbnString = elements.joined()
-        gtin = isbn.toInt()
+        gtin = isbn.compactMap(\.wholeNumberValue).reduce(0, { $0 * 10 + $1 })
     }
     
     /// Create a ISBN with a given GTIN representation
@@ -57,6 +57,24 @@ extension ISBN {
     public static func isValid(_ gtin: Int) -> Bool {
         isValid(String(gtin))
     }
+    
+    /// Returns a string representation of an ISBN with hyphens
+    public static func hyphenated(_ isbn: String) -> String? {
+        guard isValid(isbn) else {
+            return nil
+        }
+        let isbn = isbn.cleanedISBN()
+        guard let registrationGroup = registrationGroups.group(for: isbn),
+              let elements = registrationGroup.elements(for: isbn) else {
+            return nil
+        }
+        return elements.joined()
+    }
+    
+    /// Returns a string representation of an ISBN with hyphens from a given GTIN representation
+    public static func hyphenated(_ gtin: Int) -> String? {
+        hyphenated(String(gtin))
+    }
 }
 
 extension ISBN {
@@ -78,7 +96,7 @@ extension ISBN {
         
         /// Returns a string by concatenating the elements of the ISBN with hyphens
         public func joined() -> String {
-            [String(prefix), "\(group)", registrant, publication, String(checkDigit)].joined(separator: "-")
+            [String(prefix), String(group), registrant, publication, String(checkDigit)].joined(separator: "-")
         }
     }
     
@@ -151,10 +169,6 @@ private extension String {
             isbn = "\(isbn)\((10 - (isbn.calculateISBNChecksum() % 10) % 10))"
         }
         return isbn
-    }
-    
-    func toInt() -> Int {
-        compactMap(\.wholeNumberValue).reduce(0, { $0 * 10 + $1 })
     }
 }
 
