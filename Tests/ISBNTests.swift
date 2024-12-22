@@ -10,3 +10,13 @@ func validate(isbnString: String) {
 func validateWithInvalidChecksum(isbnString: String) {
     #expect(!ISBN.isValid(isbnString))
 }
+
+@Test("Ensure each element of the ISBN is correct")
+func elements() throws {
+    let isbn = try #require(ISBN("978-1-4088-5589-8"))
+    #expect(isbn.elements.prefix == 978)
+    #expect(isbn.elements.group == 1)
+    #expect(isbn.elements.registrant == "4088")
+    #expect(isbn.elements.publication == "5589")
+    #expect(isbn.elements.checkDigit == 8)
+}

@@ -3,7 +3,42 @@ import Foundation
 /// Represents an International Standard Book Number, the unique identification of books and other independent publications with editorial content.
 
 public struct ISBN {
-
+    /// The registration group name of the ISBN
+    public let groupName: String
+    
+    /// The elements of the ISBN
+    public let elements: Elements
+    
+    /// The string representation with hyphens of the ISBN
+    public let isbnString: String
+    
+    /// The Global Trade Item Number
+    public let gtin: Int
+    
+    /// Create a ISBN with a given string representation
+    ///
+    /// Returns `nil` if the ISBN is not valid
+    public init?(_ isbn: String) {
+        guard Self.isValid(isbn) else {
+            return nil
+        }
+        let isbn = isbn.cleanedISBN()
+        guard let registrationGroup = Self.registrationGroups.group(for: isbn),
+              let elements = registrationGroup.elements(for: isbn) else {
+            return nil
+        }
+        groupName = registrationGroup.name
+        self.elements = elements
+        isbnString = elements.joined()
+        gtin = isbn.toInt()
+    }
+    
+    /// Create a ISBN with a given GTIN representation
+    ///
+    /// Returns `nil` if the ISBN is not valid
+    public init?(_ gtin: Int) {
+        self.init(String(gtin))
+    }
 }
 
 extension ISBN {
@@ -21,6 +56,62 @@ extension ISBN {
     /// Validates a given GTIN representation of an ISBN
     public static func isValid(_ gtin: Int) -> Bool {
         isValid(String(gtin))
+    }
+}
+
+extension ISBN {
+    public struct Elements {
+        /// The prefix element of the ISBN; either 978 or 979
+        public let prefix: Int
+        
+        /// The group number element of the ISBN
+        public let group: Int
+        
+        /// The registrant number element of the ISBN as a string because it may have a leading zero
+        public let registrant: String
+        
+        /// The publication number element of the ISBN as a string because it may have a leading zero
+        public let publication: String
+        
+        /// The check digit element of the ISBN
+        public let checkDigit: Int
+        
+        /// Returns a string by concatenating the elements of the ISBN with hyphens
+        public func joined() -> String {
+            [String(prefix), "\(group)", registrant, publication, String(checkDigit)].joined(separator: "-")
+        }
+    }
+    
+    struct RegistrationGroup {
+        struct Rule {
+            let range: ClosedRange<Int>
+            let length: Int
+        }
+        
+        let prefix: Int
+        let group: Int
+        let name: String
+        let rules: [Rule]
+        
+        func elements(for isbn: String) -> Elements? {
+            let digits = isbn.dropFirst("\(prefix)\(group)".count)
+            let rule = rules.first { rule in
+                guard let registrant = Int(digits.dropLast(digits.count - rule.length)) else {
+                    return false
+                }
+                return rule.range.contains(registrant)
+            }
+            guard let registrantLength = rule?.length, let checkDigit = Int(isbn.dropFirst(isbn.count - 1)) else {
+                return nil
+            }
+            return .init(
+                prefix: prefix,
+                group: group,
+                registrant: String(digits.dropLast(digits.count - registrantLength)),
+                publication: String(digits.dropLast().dropFirst(registrantLength)),
+                checkDigit: checkDigit
+            )
+        }
     }
 }
 
@@ -64,5 +155,11 @@ private extension String {
     
     func toInt() -> Int {
         compactMap(\.wholeNumberValue).reduce(0, { $0 * 10 + $1 })
+    }
+}
+
+private extension Array where Element == ISBN.RegistrationGroup {
+    func group(for isbn: String) -> ISBN.RegistrationGroup? {
+        first(where: { isbn.hasPrefix("\($0.prefix)\($0.group)") })
     }
 }
