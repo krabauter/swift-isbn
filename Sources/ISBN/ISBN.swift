@@ -77,6 +77,27 @@ extension ISBN {
     }
 }
 
+extension ISBN: Codable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let isbnString: String
+        if let gtin = try? container.decode(Int.self) {
+            isbnString = String(gtin)
+        } else {
+            isbnString = try container.decode(String.self)
+        }
+        guard let isbn = Self(isbnString) else {
+            throw DecodingError.dataCorruptedError(in: container, debugDescription: "Invalid ISBN '\(isbnString)'")
+        }
+        self = isbn
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(isbnString)
+    }
+}
+
 extension ISBN {
     public struct Elements {
         /// The prefix element of the ISBN; either 978 or 979

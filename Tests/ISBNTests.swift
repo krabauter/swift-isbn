@@ -1,3 +1,4 @@
+import Foundation
 import ISBN
 import Testing
 
@@ -42,4 +43,33 @@ func groupName() async throws {
 func gtin13() async throws {
     let isbn = try #require(ISBN("978-1-4088-5589-8"))
     #expect(isbn.gtin == 9781408855898)
+}
+
+@Test("Encoding")
+func encode() throws {
+    let isbn = try #require(ISBN("978-1-4088-5589-8"))
+    let book = Book(isbn: isbn)
+    let encoder = JSONEncoder()
+    let data = try encoder.encode(book)
+    let decoder = JSONDecoder()
+    let decodedBook = try decoder.decode(Book.self, from: data)
+    #expect(book == decodedBook)
+}
+
+@Test("Decoding")
+func decode() throws {
+    let data = Data(#"{"isbn": "978-1-4088-5589-8"}"#.utf8)
+    let decoder = JSONDecoder()
+    let container = try decoder.decode(Book.self, from: data)
+    #expect(container.isbn.isbnString == "978-1-4088-5589-8")
+}
+
+private struct Book: Codable {
+    let isbn: ISBN
+}
+
+extension Book: Equatable {
+    static func == (lhs: Book, rhs: Book) -> Bool {
+        lhs.isbn.isbnString == rhs.isbn.isbnString
+    }
 }
