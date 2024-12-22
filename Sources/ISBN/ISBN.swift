@@ -98,8 +98,10 @@ extension ISBN: Codable {
     }
 }
 
+extension ISBN: Sendable {}
+
 extension ISBN {
-    public struct Elements {
+    public struct Elements: Sendable {
         /// The prefix element of the ISBN; either 978 or 979
         public let prefix: Int
         
