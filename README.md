@@ -1,4 +1,4 @@
-# ISBN
+# Swift ISBN
 
 A lightweight Swift library to parse, validate, and display ISBNs. The library seamlessly handles ISBN-10 by converting it automatically to ISBN-13, ensuring consistent 13-digit identifiers.
 
@@ -15,13 +15,13 @@ A lightweight Swift library to parse, validate, and display ISBNs. The library s
 
 Swift Package Manager
 1. In Xcode, select File > Add Packages…
-2. Enter the URL of the repository (e.g., https://github.com/krabauter/isbn.git).
+2. Enter the URL of the repository (e.g., https://github.com/krabauter/swift-isbn.git).
 3. Choose Add Package and the desired target.
 
 Or, you can add it manually to your Package.swift:
 ```swift
 dependencies: [
-    .package(url: "https://github.com/krabauter/isbn.git", from: "1.0.0")
+    .package(url: "https://github.com/krabauter/swift-isbn.git", from: "1.0.0")
 ]
 ```
 Then import ISBN in any Swift file where you want to use it:
