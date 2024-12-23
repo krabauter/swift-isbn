@@ -1,9 +1,9 @@
 // International ISBN Agency
-// Sun, 22 Dec 2024 20:46:10 GMT
+// Mon, 23 Dec 2024 11:06:02 GMT
 
 extension ISBN {
-    static let registrationGroups: [RegistrationGroup] = [
-        .init(
+    static let registrationGroups: [String: RegistrationGroup] = [
+        "9780": .init(
             prefix: 978,
             group: 0,
             name: "English language",
@@ -31,7 +31,7 @@ extension ISBN {
                 .init(range: 9500000...9999999, length: 7)
             ]
         ),
-        .init(
+        "9781": .init(
             prefix: 978,
             group: 1,
             name: "English language",
@@ -85,7 +85,7 @@ extension ISBN {
                 .init(range: 9989900...9999999, length: 7)
             ]
         ),
-        .init(
+        "9782": .init(
             prefix: 978,
             group: 2,
             name: "French language",
@@ -111,7 +111,7 @@ extension ISBN {
                 .init(range: 9500000...9999999, length: 7)
             ]
         ),
-        .init(
+        "9783": .init(
             prefix: 978,
             group: 3,
             name: "German language",
@@ -135,7 +135,7 @@ extension ISBN {
                 .init(range: 9996...9999, length: 4)
             ]
         ),
-        .init(
+        "9784": .init(
             prefix: 978,
             group: 4,
             name: "Japan",
@@ -148,7 +148,7 @@ extension ISBN {
                 .init(range: 9500000...9999999, length: 7)
             ]
         ),
-        .init(
+        "9785": .init(
             prefix: 978,
             group: 5,
             name: "former U.S.S.R",
@@ -181,7 +181,7 @@ extension ISBN {
                 .init(range: 9910...9999, length: 4)
             ]
         ),
-        .init(
+        "978600": .init(
             prefix: 978,
             group: 600,
             name: "Iran",
@@ -195,7 +195,7 @@ extension ISBN {
                 .init(range: 99600...99999, length: 5)
             ]
         ),
-        .init(
+        "978601": .init(
             prefix: 978,
             group: 601,
             name: "Kazakhstan",
@@ -207,7 +207,7 @@ extension ISBN {
                 .init(range: 85...99, length: 2)
             ]
         ),
-        .init(
+        "978602": .init(
             prefix: 978,
             group: 602,
             name: "Indonesia",
@@ -227,7 +227,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "978603": .init(
             prefix: 978,
             group: 603,
             name: "Saudi Arabia",
@@ -239,7 +239,7 @@ extension ISBN {
                 .init(range: 90000...99999, length: 5)
             ]
         ),
-        .init(
+        "978604": .init(
             prefix: 978,
             group: 604,
             name: "Vietnam",
@@ -254,7 +254,7 @@ extension ISBN {
                 .init(range: 9800...9999, length: 4)
             ]
         ),
-        .init(
+        "978605": .init(
             prefix: 978,
             group: 605,
             name: "Türkiye",
@@ -274,7 +274,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "978606": .init(
             prefix: 978,
             group: 606,
             name: "Romania",
@@ -289,7 +289,7 @@ extension ISBN {
                 .init(range: 975...999, length: 3)
             ]
         ),
-        .init(
+        "978607": .init(
             prefix: 978,
             group: 607,
             name: "Mexico",
@@ -308,7 +308,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "978608": .init(
             prefix: 978,
             group: 608,
             name: "North Macedonia",
@@ -321,7 +321,7 @@ extension ISBN {
                 .init(range: 7...9, length: 1)
             ]
         ),
-        .init(
+        "978609": .init(
             prefix: 978,
             group: 609,
             name: "Lithuania",
@@ -332,15 +332,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
-            prefix: 978,
-            group: 611,
-            name: "Thailand",
-            rules: [
-                
-            ]
-        ),
-        .init(
+        "978612": .init(
             prefix: 978,
             group: 612,
             name: "Peru",
@@ -352,7 +344,7 @@ extension ISBN {
                 .init(range: 5000...5224, length: 4)
             ]
         ),
-        .init(
+        "978613": .init(
             prefix: 978,
             group: 613,
             name: "Mauritius",
@@ -360,7 +352,7 @@ extension ISBN {
                 .init(range: 0...9, length: 1)
             ]
         ),
-        .init(
+        "978614": .init(
             prefix: 978,
             group: 614,
             name: "Lebanon",
@@ -371,7 +363,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "978615": .init(
             prefix: 978,
             group: 615,
             name: "Hungary",
@@ -382,7 +374,7 @@ extension ISBN {
                 .init(range: 80000...89999, length: 5)
             ]
         ),
-        .init(
+        "978616": .init(
             prefix: 978,
             group: 616,
             name: "Thailand",
@@ -393,7 +385,7 @@ extension ISBN {
                 .init(range: 90000...99999, length: 5)
             ]
         ),
-        .init(
+        "978617": .init(
             prefix: 978,
             group: 617,
             name: "Ukraine",
@@ -404,7 +396,7 @@ extension ISBN {
                 .init(range: 90000...99999, length: 5)
             ]
         ),
-        .init(
+        "978618": .init(
             prefix: 978,
             group: 618,
             name: "Greece",
@@ -415,7 +407,7 @@ extension ISBN {
                 .init(range: 80000...99999, length: 5)
             ]
         ),
-        .init(
+        "978619": .init(
             prefix: 978,
             group: 619,
             name: "Bulgaria",
@@ -426,7 +418,7 @@ extension ISBN {
                 .init(range: 90000...99999, length: 5)
             ]
         ),
-        .init(
+        "978620": .init(
             prefix: 978,
             group: 620,
             name: "Mauritius",
@@ -434,7 +426,7 @@ extension ISBN {
                 .init(range: 0...9, length: 1)
             ]
         ),
-        .init(
+        "978621": .init(
             prefix: 978,
             group: 621,
             name: "Philippines",
@@ -445,7 +437,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "978622": .init(
             prefix: 978,
             group: 622,
             name: "Iran",
@@ -456,7 +448,7 @@ extension ISBN {
                 .init(range: 87500...99999, length: 5)
             ]
         ),
-        .init(
+        "978623": .init(
             prefix: 978,
             group: 623,
             name: "Indonesia",
@@ -467,18 +459,18 @@ extension ISBN {
                 .init(range: 88000...99999, length: 5)
             ]
         ),
-        .init(
+        "978624": .init(
             prefix: 978,
             group: 624,
             name: "Sri Lanka",
             rules: [
                 .init(range: 0...4, length: 2),
                 .init(range: 200...249, length: 3),
-                .init(range: 5000...6699, length: 4),
+                .init(range: 5000...6899, length: 4),
                 .init(range: 93000...99999, length: 5)
             ]
         ),
-        .init(
+        "978625": .init(
             prefix: 978,
             group: 625,
             name: "Türkiye",
@@ -493,7 +485,7 @@ extension ISBN {
                 .init(range: 94000...99999, length: 5)
             ]
         ),
-        .init(
+        "978626": .init(
             prefix: 978,
             group: 626,
             name: "Taiwan",
@@ -504,7 +496,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "978627": .init(
             prefix: 978,
             group: 627,
             name: "Pakistan",
@@ -515,7 +507,7 @@ extension ISBN {
                 .init(range: 94500...94649, length: 5)
             ]
         ),
-        .init(
+        "978628": .init(
             prefix: 978,
             group: 628,
             name: "Colombia",
@@ -526,7 +518,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "978629": .init(
             prefix: 978,
             group: 629,
             name: "Malaysia",
@@ -537,7 +529,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "978630": .init(
             prefix: 978,
             group: 630,
             name: "Romania",
@@ -547,7 +539,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "978631": .init(
             prefix: 978,
             group: 631,
             name: "Argentina",
@@ -558,7 +550,7 @@ extension ISBN {
                 .init(range: 90000...99999, length: 5)
             ]
         ),
-        .init(
+        "978632": .init(
             prefix: 978,
             group: 632,
             name: "Vietnam",
@@ -567,7 +559,7 @@ extension ISBN {
                 .init(range: 600...679, length: 3)
             ]
         ),
-        .init(
+        "978633": .init(
             prefix: 978,
             group: 633,
             name: "Egypt",
@@ -578,7 +570,7 @@ extension ISBN {
                 .init(range: 99500...99999, length: 5)
             ]
         ),
-        .init(
+        "978634": .init(
             prefix: 978,
             group: 634,
             name: "Indonesia",
@@ -589,7 +581,7 @@ extension ISBN {
                 .init(range: 96000...99999, length: 5)
             ]
         ),
-        .init(
+        "97865": .init(
             prefix: 978,
             group: 65,
             name: "Brazil",
@@ -605,7 +597,7 @@ extension ISBN {
                 .init(range: 980000...999999, length: 6)
             ]
         ),
-        .init(
+        "9787": .init(
             prefix: 978,
             group: 7,
             name: "China, People's Republic",
@@ -617,7 +609,7 @@ extension ISBN {
                 .init(range: 900000...999999, length: 6)
             ]
         ),
-        .init(
+        "97880": .init(
             prefix: 978,
             group: 80,
             name: "former Czechoslovakia",
@@ -633,7 +625,7 @@ extension ISBN {
                 .init(range: 99900...99999, length: 5)
             ]
         ),
-        .init(
+        "97881": .init(
             prefix: 978,
             group: 81,
             name: "India",
@@ -646,7 +638,7 @@ extension ISBN {
                 .init(range: 900000...999999, length: 6)
             ]
         ),
-        .init(
+        "97882": .init(
             prefix: 978,
             group: 82,
             name: "Norway",
@@ -659,7 +651,7 @@ extension ISBN {
                 .init(range: 990000...999999, length: 6)
             ]
         ),
-        .init(
+        "97883": .init(
             prefix: 978,
             group: 83,
             name: "Poland",
@@ -672,7 +664,7 @@ extension ISBN {
                 .init(range: 900000...999999, length: 6)
             ]
         ),
-        .init(
+        "97884": .init(
             prefix: 978,
             group: 84,
             name: "Spain",
@@ -695,7 +687,7 @@ extension ISBN {
                 .init(range: 9700...9999, length: 4)
             ]
         ),
-        .init(
+        "97885": .init(
             prefix: 978,
             group: 85,
             name: "Brazil",
@@ -727,7 +719,7 @@ extension ISBN {
                 .init(range: 98000...99999, length: 5)
             ]
         ),
-        .init(
+        "97886": .init(
             prefix: 978,
             group: 86,
             name: "former Yugoslavia",
@@ -739,7 +731,7 @@ extension ISBN {
                 .init(range: 900000...999999, length: 6)
             ]
         ),
-        .init(
+        "97887": .init(
             prefix: 978,
             group: 87,
             name: "Denmark",
@@ -751,7 +743,7 @@ extension ISBN {
                 .init(range: 970000...999999, length: 6)
             ]
         ),
-        .init(
+        "97888": .init(
             prefix: 978,
             group: 88,
             name: "Italy",
@@ -777,7 +769,7 @@ extension ISBN {
                 .init(range: 94800...99999, length: 5)
             ]
         ),
-        .init(
+        "97889": .init(
             prefix: 978,
             group: 89,
             name: "Korea, Republic",
@@ -791,7 +783,7 @@ extension ISBN {
                 .init(range: 990...999, length: 3)
             ]
         ),
-        .init(
+        "97890": .init(
             prefix: 978,
             group: 90,
             name: "Netherlands",
@@ -806,7 +798,7 @@ extension ISBN {
                 .init(range: 94...94, length: 2)
             ]
         ),
-        .init(
+        "97891": .init(
             prefix: 978,
             group: 91,
             name: "Sweden",
@@ -819,7 +811,7 @@ extension ISBN {
                 .init(range: 970000...999999, length: 6)
             ]
         ),
-        .init(
+        "97892": .init(
             prefix: 978,
             group: 92,
             name: "International NGO Publishers and EU Organizations",
@@ -832,7 +824,7 @@ extension ISBN {
                 .init(range: 990000...999999, length: 6)
             ]
         ),
-        .init(
+        "97893": .init(
             prefix: 978,
             group: 93,
             name: "India",
@@ -845,7 +837,7 @@ extension ISBN {
                 .init(range: 960000...999999, length: 6)
             ]
         ),
-        .init(
+        "97894": .init(
             prefix: 978,
             group: 94,
             name: "Netherlands",
@@ -970,7 +962,7 @@ extension ISBN {
                 .init(range: 90000...99999, length: 5)
             ]
         ),
-        .init(
+        "978950": .init(
             prefix: 978,
             group: 950,
             name: "Argentina",
@@ -981,7 +973,7 @@ extension ISBN {
                 .init(range: 99000...99999, length: 5)
             ]
         ),
-        .init(
+        "978951": .init(
             prefix: 978,
             group: 951,
             name: "Finland",
@@ -993,7 +985,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "978952": .init(
             prefix: 978,
             group: 952,
             name: "Finland",
@@ -1011,7 +1003,7 @@ extension ISBN {
                 .init(range: 99000...99999, length: 5)
             ]
         ),
-        .init(
+        "978953": .init(
             prefix: 978,
             group: 953,
             name: "Croatia",
@@ -1028,7 +1020,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "978954": .init(
             prefix: 978,
             group: 954,
             name: "Bulgaria",
@@ -1041,7 +1033,7 @@ extension ISBN {
                 .init(range: 9300...9999, length: 4)
             ]
         ),
-        .init(
+        "978955": .init(
             prefix: 978,
             group: 955,
             name: "Sri Lanka",
@@ -1062,7 +1054,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "978956": .init(
             prefix: 978,
             group: 956,
             name: "Chile",
@@ -1076,7 +1068,7 @@ extension ISBN {
                 .init(range: 7000...9999, length: 4)
             ]
         ),
-        .init(
+        "978957": .init(
             prefix: 978,
             group: 957,
             name: "Taiwan",
@@ -1093,7 +1085,7 @@ extension ISBN {
                 .init(range: 97000...99999, length: 5)
             ]
         ),
-        .init(
+        "978958": .init(
             prefix: 978,
             group: 958,
             name: "Colombia",
@@ -1109,7 +1101,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "978959": .init(
             prefix: 978,
             group: 959,
             name: "Cuba",
@@ -1120,7 +1112,7 @@ extension ISBN {
                 .init(range: 85000...99999, length: 5)
             ]
         ),
-        .init(
+        "978960": .init(
             prefix: 978,
             group: 960,
             name: "Greece",
@@ -1136,7 +1128,7 @@ extension ISBN {
                 .init(range: 98000...99999, length: 5)
             ]
         ),
-        .init(
+        "978961": .init(
             prefix: 978,
             group: 961,
             name: "Slovenia",
@@ -1147,7 +1139,7 @@ extension ISBN {
                 .init(range: 90000...97999, length: 5)
             ]
         ),
-        .init(
+        "978962": .init(
             prefix: 978,
             group: 962,
             name: "Hong Kong, China",
@@ -1160,7 +1152,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "978963": .init(
             prefix: 978,
             group: 963,
             name: "Hungary",
@@ -1172,7 +1164,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "978964": .init(
             prefix: 978,
             group: 964,
             name: "Iran",
@@ -1187,7 +1179,7 @@ extension ISBN {
                 .init(range: 9900...9999, length: 4)
             ]
         ),
-        .init(
+        "978965": .init(
             prefix: 978,
             group: 965,
             name: "Israel",
@@ -1198,7 +1190,7 @@ extension ISBN {
                 .init(range: 90000...99999, length: 5)
             ]
         ),
-        .init(
+        "978966": .init(
             prefix: 978,
             group: 966,
             name: "Ukraine",
@@ -1219,7 +1211,7 @@ extension ISBN {
                 .init(range: 980...999, length: 3)
             ]
         ),
-        .init(
+        "978967": .init(
             prefix: 978,
             group: 967,
             name: "Malaysia",
@@ -1239,7 +1231,7 @@ extension ISBN {
                 .init(range: 99900...99999, length: 5)
             ]
         ),
-        .init(
+        "978968": .init(
             prefix: 978,
             group: 968,
             name: "Mexico",
@@ -1251,7 +1243,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "978969": .init(
             prefix: 978,
             group: 969,
             name: "Pakistan",
@@ -1266,7 +1258,7 @@ extension ISBN {
                 .init(range: 7500...9999, length: 4)
             ]
         ),
-        .init(
+        "978970": .init(
             prefix: 978,
             group: 970,
             name: "Mexico",
@@ -1278,7 +1270,7 @@ extension ISBN {
                 .init(range: 9700...9999, length: 4)
             ]
         ),
-        .init(
+        "978971": .init(
             prefix: 978,
             group: 971,
             name: "Philippines",
@@ -1296,7 +1288,7 @@ extension ISBN {
                 .init(range: 9900...9999, length: 4)
             ]
         ),
-        .init(
+        "978972": .init(
             prefix: 978,
             group: 972,
             name: "Portugal",
@@ -1308,7 +1300,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "978973": .init(
             prefix: 978,
             group: 973,
             name: "Romania",
@@ -1324,7 +1316,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "978974": .init(
             prefix: 978,
             group: 974,
             name: "Thailand",
@@ -1337,7 +1329,7 @@ extension ISBN {
                 .init(range: 9500...9999, length: 4)
             ]
         ),
-        .init(
+        "978975": .init(
             prefix: 978,
             group: 975,
             name: "Türkiye",
@@ -1351,7 +1343,7 @@ extension ISBN {
                 .init(range: 990...999, length: 3)
             ]
         ),
-        .init(
+        "978976": .init(
             prefix: 978,
             group: 976,
             name: "Caribbean Community",
@@ -1363,7 +1355,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "978977": .init(
             prefix: 978,
             group: 977,
             name: "Egypt",
@@ -1381,7 +1373,7 @@ extension ISBN {
                 .init(range: 970...999, length: 3)
             ]
         ),
-        .init(
+        "978978": .init(
             prefix: 978,
             group: 978,
             name: "Nigeria",
@@ -1394,7 +1386,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "978979": .init(
             prefix: 978,
             group: 979,
             name: "Indonesia",
@@ -1409,7 +1401,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "978980": .init(
             prefix: 978,
             group: 980,
             name: "Venezuela",
@@ -1419,7 +1411,7 @@ extension ISBN {
                 .init(range: 6000...9999, length: 4)
             ]
         ),
-        .init(
+        "978981": .init(
             prefix: 978,
             group: 981,
             name: "Singapore",
@@ -1435,7 +1427,7 @@ extension ISBN {
                 .init(range: 96...99, length: 2)
             ]
         ),
-        .init(
+        "978982": .init(
             prefix: 978,
             group: 982,
             name: "South Pacific",
@@ -1447,7 +1439,7 @@ extension ISBN {
                 .init(range: 98000...99999, length: 5)
             ]
         ),
-        .init(
+        "978983": .init(
             prefix: 978,
             group: 983,
             name: "Malaysia",
@@ -1463,7 +1455,7 @@ extension ISBN {
                 .init(range: 99000...99999, length: 5)
             ]
         ),
-        .init(
+        "978984": .init(
             prefix: 978,
             group: 984,
             name: "Bangladesh",
@@ -1474,7 +1466,7 @@ extension ISBN {
                 .init(range: 90000...99999, length: 5)
             ]
         ),
-        .init(
+        "978985": .init(
             prefix: 978,
             group: 985,
             name: "Belarus",
@@ -1486,7 +1478,7 @@ extension ISBN {
                 .init(range: 90000...99999, length: 5)
             ]
         ),
-        .init(
+        "978986": .init(
             prefix: 978,
             group: 986,
             name: "Taiwan",
@@ -1500,7 +1492,7 @@ extension ISBN {
                 .init(range: 80000...99999, length: 5)
             ]
         ),
-        .init(
+        "978987": .init(
             prefix: 978,
             group: 987,
             name: "Argentina",
@@ -1523,7 +1515,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "978988": .init(
             prefix: 978,
             group: 988,
             name: "Hong Kong, China",
@@ -1536,7 +1528,7 @@ extension ISBN {
                 .init(range: 97000...99999, length: 5)
             ]
         ),
-        .init(
+        "978989": .init(
             prefix: 978,
             group: 989,
             name: "Portugal",
@@ -1551,7 +1543,7 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
-        .init(
+        "9789908": .init(
             prefix: 978,
             group: 9908,
             name: "Estonia",
@@ -1562,7 +1554,7 @@ extension ISBN {
                 .init(range: 9700...9999, length: 4)
             ]
         ),
-        .init(
+        "9789909": .init(
             prefix: 978,
             group: 9909,
             name: "Tunisia",
@@ -1572,7 +1564,7 @@ extension ISBN {
                 .init(range: 9800...9999, length: 4)
             ]
         ),
-        .init(
+        "9789910": .init(
             prefix: 978,
             group: 9910,
             name: "Uzbekistan",
@@ -1582,7 +1574,7 @@ extension ISBN {
                 .init(range: 8600...9999, length: 4)
             ]
         ),
-        .init(
+        "9789911": .init(
             prefix: 978,
             group: 9911,
             name: "Montenegro",
@@ -1592,7 +1584,7 @@ extension ISBN {
                 .init(range: 9500...9999, length: 4)
             ]
         ),
-        .init(
+        "9789912": .init(
             prefix: 978,
             group: 9912,
             name: "Tanzania",
@@ -1602,7 +1594,7 @@ extension ISBN {
                 .init(range: 9800...9999, length: 4)
             ]
         ),
-        .init(
+        "9789913": .init(
             prefix: 978,
             group: 9913,
             name: "Uganda",
@@ -1612,7 +1604,7 @@ extension ISBN {
                 .init(range: 9550...9999, length: 4)
             ]
         ),
-        .init(
+        "9789914": .init(
             prefix: 978,
             group: 9914,
             name: "Kenya",
@@ -1622,7 +1614,7 @@ extension ISBN {
                 .init(range: 9450...9999, length: 4)
             ]
         ),
-        .init(
+        "9789915": .init(
             prefix: 978,
             group: 9915,
             name: "Uruguay",
@@ -1632,7 +1624,7 @@ extension ISBN {
                 .init(range: 9300...9999, length: 4)
             ]
         ),
-        .init(
+        "9789916": .init(
             prefix: 978,
             group: 9916,
             name: "Estonia",
@@ -1647,7 +1639,7 @@ extension ISBN {
                 .init(range: 9500...9999, length: 4)
             ]
         ),
-        .init(
+        "9789917": .init(
             prefix: 978,
             group: 9917,
             name: "Bolivia",
@@ -1658,7 +1650,7 @@ extension ISBN {
                 .init(range: 9700...9999, length: 4)
             ]
         ),
-        .init(
+        "9789918": .init(
             prefix: 978,
             group: 9918,
             name: "Malta",
@@ -1669,7 +1661,7 @@ extension ISBN {
                 .init(range: 9500...9999, length: 4)
             ]
         ),
-        .init(
+        "9789919": .init(
             prefix: 978,
             group: 9919,
             name: "Mongolia",
@@ -1680,7 +1672,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789920": .init(
             prefix: 978,
             group: 9920,
             name: "Morocco",
@@ -1690,7 +1682,7 @@ extension ISBN {
                 .init(range: 8550...9999, length: 4)
             ]
         ),
-        .init(
+        "9789921": .init(
             prefix: 978,
             group: 9921,
             name: "Kuwait",
@@ -1701,7 +1693,7 @@ extension ISBN {
                 .init(range: 9700...9999, length: 4)
             ]
         ),
-        .init(
+        "9789922": .init(
             prefix: 978,
             group: 9922,
             name: "Iraq",
@@ -1711,7 +1703,7 @@ extension ISBN {
                 .init(range: 8250...9999, length: 4)
             ]
         ),
-        .init(
+        "9789923": .init(
             prefix: 978,
             group: 9923,
             name: "Jordan",
@@ -1722,7 +1714,7 @@ extension ISBN {
                 .init(range: 9400...9999, length: 4)
             ]
         ),
-        .init(
+        "9789924": .init(
             prefix: 978,
             group: 9924,
             name: "Cambodia",
@@ -1732,7 +1724,7 @@ extension ISBN {
                 .init(range: 8950...9999, length: 4)
             ]
         ),
-        .init(
+        "9789925": .init(
             prefix: 978,
             group: 9925,
             name: "Cyprus",
@@ -1743,7 +1735,7 @@ extension ISBN {
                 .init(range: 7350...9999, length: 4)
             ]
         ),
-        .init(
+        "9789926": .init(
             prefix: 978,
             group: 9926,
             name: "Bosnia and Herzegovina",
@@ -1754,7 +1746,7 @@ extension ISBN {
                 .init(range: 8000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789927": .init(
             prefix: 978,
             group: 9927,
             name: "Qatar",
@@ -1764,7 +1756,7 @@ extension ISBN {
                 .init(range: 4000...4999, length: 4)
             ]
         ),
-        .init(
+        "9789928": .init(
             prefix: 978,
             group: 9928,
             name: "Albania",
@@ -1776,7 +1768,7 @@ extension ISBN {
                 .init(range: 90...99, length: 2)
             ]
         ),
-        .init(
+        "9789929": .init(
             prefix: 978,
             group: 9929,
             name: "Guatemala",
@@ -1787,7 +1779,7 @@ extension ISBN {
                 .init(range: 8000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789930": .init(
             prefix: 978,
             group: 9930,
             name: "Costa Rica",
@@ -1797,7 +1789,7 @@ extension ISBN {
                 .init(range: 9400...9999, length: 4)
             ]
         ),
-        .init(
+        "9789931": .init(
             prefix: 978,
             group: 9931,
             name: "Algeria",
@@ -1807,7 +1799,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789932": .init(
             prefix: 978,
             group: 9932,
             name: "Lao People's Democratic Republic",
@@ -1817,7 +1809,7 @@ extension ISBN {
                 .init(range: 8500...9999, length: 4)
             ]
         ),
-        .init(
+        "9789933": .init(
             prefix: 978,
             group: 9933,
             name: "Syria",
@@ -1829,7 +1821,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789934": .init(
             prefix: 978,
             group: 9934,
             name: "Latvia",
@@ -1840,7 +1832,7 @@ extension ISBN {
                 .init(range: 8000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789935": .init(
             prefix: 978,
             group: 9935,
             name: "Iceland",
@@ -1851,7 +1843,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789936": .init(
             prefix: 978,
             group: 9936,
             name: "Afghanistan",
@@ -1862,7 +1854,7 @@ extension ISBN {
                 .init(range: 8000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789937": .init(
             prefix: 978,
             group: 9937,
             name: "Nepal",
@@ -1873,7 +1865,7 @@ extension ISBN {
                 .init(range: 8000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789938": .init(
             prefix: 978,
             group: 9938,
             name: "Tunisia",
@@ -1885,7 +1877,7 @@ extension ISBN {
                 .init(range: 9910...9999, length: 4)
             ]
         ),
-        .init(
+        "9789939": .init(
             prefix: 978,
             group: 9939,
             name: "Armenia",
@@ -1900,7 +1892,7 @@ extension ISBN {
                 .init(range: 98...99, length: 2)
             ]
         ),
-        .init(
+        "9789940": .init(
             prefix: 978,
             group: 9940,
             name: "Montenegro",
@@ -1912,7 +1904,7 @@ extension ISBN {
                 .init(range: 8700...9999, length: 4)
             ]
         ),
-        .init(
+        "9789941": .init(
             prefix: 978,
             group: 9941,
             name: "Georgia",
@@ -1924,7 +1916,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789942": .init(
             prefix: 978,
             group: 9942,
             name: "Ecuador",
@@ -1938,7 +1930,7 @@ extension ISBN {
                 .init(range: 9850...9999, length: 4)
             ]
         ),
-        .init(
+        "9789943": .init(
             prefix: 978,
             group: 9943,
             name: "Uzbekistan",
@@ -1949,7 +1941,7 @@ extension ISBN {
                 .init(range: 975...999, length: 3)
             ]
         ),
-        .init(
+        "9789944": .init(
             prefix: 978,
             group: 9944,
             name: "Türkiye",
@@ -1963,7 +1955,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "9789945": .init(
             prefix: 978,
             group: 9945,
             name: "Dominican Republic",
@@ -1979,7 +1971,7 @@ extension ISBN {
                 .init(range: 8500...9999, length: 4)
             ]
         ),
-        .init(
+        "9789946": .init(
             prefix: 978,
             group: 9946,
             name: "Korea, P.D.R.",
@@ -1990,7 +1982,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789947": .init(
             prefix: 978,
             group: 9947,
             name: "Algeria",
@@ -2000,7 +1992,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "9789948": .init(
             prefix: 978,
             group: 9948,
             name: "United Arab Emirates",
@@ -2010,7 +2002,7 @@ extension ISBN {
                 .init(range: 8500...9999, length: 4)
             ]
         ),
-        .init(
+        "9789949": .init(
             prefix: 978,
             group: 9949,
             name: "Estonia",
@@ -2025,7 +2017,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789950": .init(
             prefix: 978,
             group: 9950,
             name: "Palestine",
@@ -2035,7 +2027,7 @@ extension ISBN {
                 .init(range: 8500...9999, length: 4)
             ]
         ),
-        .init(
+        "9789951": .init(
             prefix: 978,
             group: 9951,
             name: "Kosova",
@@ -2046,7 +2038,7 @@ extension ISBN {
                 .init(range: 980...999, length: 3)
             ]
         ),
-        .init(
+        "9789952": .init(
             prefix: 978,
             group: 9952,
             name: "Azerbaijan",
@@ -2057,7 +2049,7 @@ extension ISBN {
                 .init(range: 8000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789953": .init(
             prefix: 978,
             group: 9953,
             name: "Lebanon",
@@ -2071,7 +2063,7 @@ extension ISBN {
                 .init(range: 970...999, length: 3)
             ]
         ),
-        .init(
+        "9789954": .init(
             prefix: 978,
             group: 9954,
             name: "Morocco",
@@ -2083,7 +2075,7 @@ extension ISBN {
                 .init(range: 99...99, length: 2)
             ]
         ),
-        .init(
+        "9789955": .init(
             prefix: 978,
             group: 9955,
             name: "Lithuania",
@@ -2093,7 +2085,7 @@ extension ISBN {
                 .init(range: 9300...9999, length: 4)
             ]
         ),
-        .init(
+        "9789956": .init(
             prefix: 978,
             group: 9956,
             name: "Cameroon",
@@ -2104,7 +2096,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789957": .init(
             prefix: 978,
             group: 9957,
             name: "Jordan",
@@ -2118,7 +2110,7 @@ extension ISBN {
                 .init(range: 88...99, length: 2)
             ]
         ),
-        .init(
+        "9789958": .init(
             prefix: 978,
             group: 9958,
             name: "Bosnia and Herzegovina",
@@ -2135,7 +2127,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789959": .init(
             prefix: 978,
             group: 9959,
             name: "Libya",
@@ -2148,7 +2140,7 @@ extension ISBN {
                 .init(range: 98...99, length: 2)
             ]
         ),
-        .init(
+        "9789960": .init(
             prefix: 978,
             group: 9960,
             name: "Saudi Arabia",
@@ -2158,7 +2150,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789961": .init(
             prefix: 978,
             group: 9961,
             name: "Algeria",
@@ -2169,7 +2161,7 @@ extension ISBN {
                 .init(range: 9500...9999, length: 4)
             ]
         ),
-        .init(
+        "9789962": .init(
             prefix: 978,
             group: 9962,
             name: "Panama",
@@ -2181,7 +2173,7 @@ extension ISBN {
                 .init(range: 8500...9999, length: 4)
             ]
         ),
-        .init(
+        "9789963": .init(
             prefix: 978,
             group: 9963,
             name: "Cyprus",
@@ -2196,7 +2188,7 @@ extension ISBN {
                 .init(range: 7500...9999, length: 4)
             ]
         ),
-        .init(
+        "9789964": .init(
             prefix: 978,
             group: 9964,
             name: "Ghana",
@@ -2206,7 +2198,7 @@ extension ISBN {
                 .init(range: 950...999, length: 3)
             ]
         ),
-        .init(
+        "9789965": .init(
             prefix: 978,
             group: 9965,
             name: "Kazakhstan",
@@ -2216,7 +2208,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789966": .init(
             prefix: 978,
             group: 9966,
             name: "Kenya",
@@ -2234,7 +2226,7 @@ extension ISBN {
                 .init(range: 9600...9999, length: 4)
             ]
         ),
-        .init(
+        "9789967": .init(
             prefix: 978,
             group: 9967,
             name: "Kyrgyz Republic",
@@ -2244,7 +2236,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789968": .init(
             prefix: 978,
             group: 9968,
             name: "Costa Rica",
@@ -2254,7 +2246,7 @@ extension ISBN {
                 .init(range: 9400...9999, length: 4)
             ]
         ),
-        .init(
+        "9789969": .init(
             prefix: 978,
             group: 9969,
             name: "Algeria",
@@ -2264,7 +2256,7 @@ extension ISBN {
                 .init(range: 9700...9999, length: 4)
             ]
         ),
-        .init(
+        "9789970": .init(
             prefix: 978,
             group: 9970,
             name: "Uganda",
@@ -2274,7 +2266,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789971": .init(
             prefix: 978,
             group: 9971,
             name: "Singapore",
@@ -2285,7 +2277,7 @@ extension ISBN {
                 .init(range: 9900...9999, length: 4)
             ]
         ),
-        .init(
+        "9789972": .init(
             prefix: 978,
             group: 9972,
             name: "Peru",
@@ -2299,7 +2291,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789973": .init(
             prefix: 978,
             group: 9973,
             name: "Tunisia",
@@ -2312,7 +2304,7 @@ extension ISBN {
                 .init(range: 9700...9999, length: 4)
             ]
         ),
-        .init(
+        "9789974": .init(
             prefix: 978,
             group: 9974,
             name: "Uruguay",
@@ -2326,7 +2318,7 @@ extension ISBN {
                 .init(range: 95...99, length: 2)
             ]
         ),
-        .init(
+        "9789975": .init(
             prefix: 978,
             group: 9975,
             name: "Moldova",
@@ -2340,7 +2332,7 @@ extension ISBN {
                 .init(range: 9500...9999, length: 4)
             ]
         ),
-        .init(
+        "9789976": .init(
             prefix: 978,
             group: 9976,
             name: "Tanzania",
@@ -2353,7 +2345,7 @@ extension ISBN {
                 .init(range: 9900...9999, length: 4)
             ]
         ),
-        .init(
+        "9789977": .init(
             prefix: 978,
             group: 9977,
             name: "Costa Rica",
@@ -2363,7 +2355,7 @@ extension ISBN {
                 .init(range: 9900...9999, length: 4)
             ]
         ),
-        .init(
+        "9789978": .init(
             prefix: 978,
             group: 9978,
             name: "Ecuador",
@@ -2375,7 +2367,7 @@ extension ISBN {
                 .init(range: 9900...9999, length: 4)
             ]
         ),
-        .init(
+        "9789979": .init(
             prefix: 978,
             group: 9979,
             name: "Iceland",
@@ -2388,7 +2380,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789980": .init(
             prefix: 978,
             group: 9980,
             name: "Papua New Guinea",
@@ -2399,7 +2391,7 @@ extension ISBN {
                 .init(range: 9900...9999, length: 4)
             ]
         ),
-        .init(
+        "9789981": .init(
             prefix: 978,
             group: 9981,
             name: "Morocco",
@@ -2412,7 +2404,7 @@ extension ISBN {
                 .init(range: 9500...9999, length: 4)
             ]
         ),
-        .init(
+        "9789982": .init(
             prefix: 978,
             group: 9982,
             name: "Zambia",
@@ -2422,7 +2414,7 @@ extension ISBN {
                 .init(range: 9900...9999, length: 4)
             ]
         ),
-        .init(
+        "9789983": .init(
             prefix: 978,
             group: 9983,
             name: "Gambia",
@@ -2432,7 +2424,7 @@ extension ISBN {
                 .init(range: 9900...9999, length: 4)
             ]
         ),
-        .init(
+        "9789984": .init(
             prefix: 978,
             group: 9984,
             name: "Latvia",
@@ -2442,7 +2434,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789985": .init(
             prefix: 978,
             group: 9985,
             name: "Estonia",
@@ -2453,7 +2445,7 @@ extension ISBN {
                 .init(range: 9000...9999, length: 4)
             ]
         ),
-        .init(
+        "9789986": .init(
             prefix: 978,
             group: 9986,
             name: "Lithuania",
@@ -2465,7 +2457,7 @@ extension ISBN {
                 .init(range: 97...99, length: 2)
             ]
         ),
-        .init(
+        "9789987": .init(
             prefix: 978,
             group: 9987,
             name: "Tanzania",
@@ -2475,7 +2467,7 @@ extension ISBN {
                 .init(range: 8800...9999, length: 4)
             ]
         ),
-        .init(
+        "9789988": .init(
             prefix: 978,
             group: 9988,
             name: "Ghana",
@@ -2486,7 +2478,7 @@ extension ISBN {
                 .init(range: 7500...9999, length: 4)
             ]
         ),
-        .init(
+        "9789989": .init(
             prefix: 978,
             group: 9989,
             name: "North Macedonia",
@@ -2499,7 +2491,7 @@ extension ISBN {
                 .init(range: 9500...9999, length: 4)
             ]
         ),
-        .init(
+        "97899901": .init(
             prefix: 978,
             group: 99901,
             name: "Bahrain",
@@ -2509,15 +2501,7 @@ extension ISBN {
                 .init(range: 80...99, length: 2)
             ]
         ),
-        .init(
-            prefix: 978,
-            group: 99902,
-            name: "Reserved Agency",
-            rules: [
-                
-            ]
-        ),
-        .init(
+        "97899903": .init(
             prefix: 978,
             group: 99903,
             name: "Mauritius",
@@ -2527,7 +2511,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "97899904": .init(
             prefix: 978,
             group: 99904,
             name: "Curaçao",
@@ -2537,7 +2521,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "97899905": .init(
             prefix: 978,
             group: 99905,
             name: "Bolivia",
@@ -2547,7 +2531,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899906": .init(
             prefix: 978,
             group: 99906,
             name: "Kuwait",
@@ -2560,7 +2544,7 @@ extension ISBN {
                 .init(range: 950...999, length: 3)
             ]
         ),
-        .init(
+        "97899908": .init(
             prefix: 978,
             group: 99908,
             name: "Malawi",
@@ -2570,7 +2554,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "97899909": .init(
             prefix: 978,
             group: 99909,
             name: "Malta",
@@ -2580,7 +2564,7 @@ extension ISBN {
                 .init(range: 950...999, length: 3)
             ]
         ),
-        .init(
+        "97899910": .init(
             prefix: 978,
             group: 99910,
             name: "Sierra Leone",
@@ -2590,7 +2574,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "97899911": .init(
             prefix: 978,
             group: 99911,
             name: "Lesotho",
@@ -2599,7 +2583,7 @@ extension ISBN {
                 .init(range: 600...999, length: 3)
             ]
         ),
-        .init(
+        "97899912": .init(
             prefix: 978,
             group: 99912,
             name: "Botswana",
@@ -2610,7 +2594,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "97899913": .init(
             prefix: 978,
             group: 99913,
             name: "Andorra",
@@ -2620,7 +2604,7 @@ extension ISBN {
                 .init(range: 600...604, length: 3)
             ]
         ),
-        .init(
+        "97899914": .init(
             prefix: 978,
             group: 99914,
             name: "International NGO Publishers",
@@ -2634,7 +2618,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "97899915": .init(
             prefix: 978,
             group: 99915,
             name: "Maldives",
@@ -2644,7 +2628,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899916": .init(
             prefix: 978,
             group: 99916,
             name: "Namibia",
@@ -2654,7 +2638,7 @@ extension ISBN {
                 .init(range: 700...999, length: 3)
             ]
         ),
-        .init(
+        "97899917": .init(
             prefix: 978,
             group: 99917,
             name: "Brunei Darussalam",
@@ -2664,7 +2648,7 @@ extension ISBN {
                 .init(range: 890...999, length: 3)
             ]
         ),
-        .init(
+        "97899918": .init(
             prefix: 978,
             group: 99918,
             name: "Faroe Islands",
@@ -2674,7 +2658,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899919": .init(
             prefix: 978,
             group: 99919,
             name: "Benin",
@@ -2685,7 +2669,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899920": .init(
             prefix: 978,
             group: 99920,
             name: "Andorra",
@@ -2695,7 +2679,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "97899921": .init(
             prefix: 978,
             group: 99921,
             name: "Qatar",
@@ -2707,7 +2691,7 @@ extension ISBN {
                 .init(range: 90...99, length: 2)
             ]
         ),
-        .init(
+        "97899922": .init(
             prefix: 978,
             group: 99922,
             name: "Guatemala",
@@ -2717,7 +2701,7 @@ extension ISBN {
                 .init(range: 700...999, length: 3)
             ]
         ),
-        .init(
+        "97899923": .init(
             prefix: 978,
             group: 99923,
             name: "El Salvador",
@@ -2727,7 +2711,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899924": .init(
             prefix: 978,
             group: 99924,
             name: "Nicaragua",
@@ -2737,7 +2721,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899925": .init(
             prefix: 978,
             group: 99925,
             name: "Paraguay",
@@ -2750,7 +2734,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899926": .init(
             prefix: 978,
             group: 99926,
             name: "Honduras",
@@ -2762,7 +2746,7 @@ extension ISBN {
                 .init(range: 90...99, length: 2)
             ]
         ),
-        .init(
+        "97899927": .init(
             prefix: 978,
             group: 99927,
             name: "Albania",
@@ -2772,7 +2756,7 @@ extension ISBN {
                 .init(range: 600...999, length: 3)
             ]
         ),
-        .init(
+        "97899928": .init(
             prefix: 978,
             group: 99928,
             name: "Georgia",
@@ -2782,7 +2766,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899929": .init(
             prefix: 978,
             group: 99929,
             name: "Mongolia",
@@ -2792,7 +2776,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899930": .init(
             prefix: 978,
             group: 99930,
             name: "Armenia",
@@ -2802,7 +2786,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899931": .init(
             prefix: 978,
             group: 99931,
             name: "Seychelles",
@@ -2812,7 +2796,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899932": .init(
             prefix: 978,
             group: 99932,
             name: "Malta",
@@ -2824,7 +2808,7 @@ extension ISBN {
                 .init(range: 80...99, length: 2)
             ]
         ),
-        .init(
+        "97899933": .init(
             prefix: 978,
             group: 99933,
             name: "Nepal",
@@ -2834,7 +2818,7 @@ extension ISBN {
                 .init(range: 600...999, length: 3)
             ]
         ),
-        .init(
+        "97899934": .init(
             prefix: 978,
             group: 99934,
             name: "Dominican Republic",
@@ -2844,7 +2828,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899935": .init(
             prefix: 978,
             group: 99935,
             name: "Haiti",
@@ -2856,7 +2840,7 @@ extension ISBN {
                 .init(range: 90...99, length: 2)
             ]
         ),
-        .init(
+        "97899936": .init(
             prefix: 978,
             group: 99936,
             name: "Bhutan",
@@ -2866,7 +2850,7 @@ extension ISBN {
                 .init(range: 600...999, length: 3)
             ]
         ),
-        .init(
+        "97899937": .init(
             prefix: 978,
             group: 99937,
             name: "Macau",
@@ -2876,7 +2860,7 @@ extension ISBN {
                 .init(range: 600...999, length: 3)
             ]
         ),
-        .init(
+        "97899938": .init(
             prefix: 978,
             group: 99938,
             name: "Srpska, Republic of",
@@ -2887,7 +2871,7 @@ extension ISBN {
                 .init(range: 90...99, length: 2)
             ]
         ),
-        .init(
+        "97899939": .init(
             prefix: 978,
             group: 99939,
             name: "Guatemala",
@@ -2898,7 +2882,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "97899940": .init(
             prefix: 978,
             group: 99940,
             name: "Georgia",
@@ -2908,7 +2892,7 @@ extension ISBN {
                 .init(range: 700...999, length: 3)
             ]
         ),
-        .init(
+        "97899941": .init(
             prefix: 978,
             group: 99941,
             name: "Armenia",
@@ -2918,7 +2902,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899942": .init(
             prefix: 978,
             group: 99942,
             name: "Sudan",
@@ -2928,7 +2912,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899943": .init(
             prefix: 978,
             group: 99943,
             name: "Albania",
@@ -2938,7 +2922,7 @@ extension ISBN {
                 .init(range: 600...999, length: 3)
             ]
         ),
-        .init(
+        "97899944": .init(
             prefix: 978,
             group: 99944,
             name: "Ethiopia",
@@ -2948,7 +2932,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899945": .init(
             prefix: 978,
             group: 99945,
             name: "Namibia",
@@ -2959,7 +2943,7 @@ extension ISBN {
                 .init(range: 98...99, length: 2)
             ]
         ),
-        .init(
+        "97899946": .init(
             prefix: 978,
             group: 99946,
             name: "Nepal",
@@ -2969,7 +2953,7 @@ extension ISBN {
                 .init(range: 600...999, length: 3)
             ]
         ),
-        .init(
+        "97899947": .init(
             prefix: 978,
             group: 99947,
             name: "Tajikistan",
@@ -2979,7 +2963,7 @@ extension ISBN {
                 .init(range: 700...999, length: 3)
             ]
         ),
-        .init(
+        "97899948": .init(
             prefix: 978,
             group: 99948,
             name: "Eritrea",
@@ -2989,7 +2973,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899949": .init(
             prefix: 978,
             group: 99949,
             name: "Mauritius",
@@ -3001,7 +2985,7 @@ extension ISBN {
                 .init(range: 99...99, length: 2)
             ]
         ),
-        .init(
+        "97899950": .init(
             prefix: 978,
             group: 99950,
             name: "Cambodia",
@@ -3011,15 +2995,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
-            prefix: 978,
-            group: 99951,
-            name: "Reserved Agency",
-            rules: [
-                
-            ]
-        ),
-        .init(
+        "97899952": .init(
             prefix: 978,
             group: 99952,
             name: "Mali",
@@ -3029,7 +3005,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899953": .init(
             prefix: 978,
             group: 99953,
             name: "Paraguay",
@@ -3040,7 +3016,7 @@ extension ISBN {
                 .init(range: 94...99, length: 2)
             ]
         ),
-        .init(
+        "97899954": .init(
             prefix: 978,
             group: 99954,
             name: "Bolivia",
@@ -3051,7 +3027,7 @@ extension ISBN {
                 .init(range: 88...99, length: 2)
             ]
         ),
-        .init(
+        "97899955": .init(
             prefix: 978,
             group: 99955,
             name: "Srpska, Republic of",
@@ -3062,7 +3038,7 @@ extension ISBN {
                 .init(range: 80...99, length: 2)
             ]
         ),
-        .init(
+        "97899956": .init(
             prefix: 978,
             group: 99956,
             name: "Albania",
@@ -3072,7 +3048,7 @@ extension ISBN {
                 .init(range: 86...99, length: 2)
             ]
         ),
-        .init(
+        "97899957": .init(
             prefix: 978,
             group: 99957,
             name: "Malta",
@@ -3083,7 +3059,7 @@ extension ISBN {
                 .init(range: 95...99, length: 2)
             ]
         ),
-        .init(
+        "97899958": .init(
             prefix: 978,
             group: 99958,
             name: "Bahrain",
@@ -3094,7 +3070,7 @@ extension ISBN {
                 .init(range: 950...999, length: 3)
             ]
         ),
-        .init(
+        "97899959": .init(
             prefix: 978,
             group: 99959,
             name: "Luxembourg",
@@ -3104,7 +3080,7 @@ extension ISBN {
                 .init(range: 600...999, length: 3)
             ]
         ),
-        .init(
+        "97899960": .init(
             prefix: 978,
             group: 99960,
             name: "Malawi",
@@ -3114,7 +3090,7 @@ extension ISBN {
                 .init(range: 950...999, length: 3)
             ]
         ),
-        .init(
+        "97899961": .init(
             prefix: 978,
             group: 99961,
             name: "El Salvador",
@@ -3125,7 +3101,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "97899962": .init(
             prefix: 978,
             group: 99962,
             name: "Mongolia",
@@ -3135,7 +3111,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899963": .init(
             prefix: 978,
             group: 99963,
             name: "Cambodia",
@@ -3145,7 +3121,7 @@ extension ISBN {
                 .init(range: 92...99, length: 2)
             ]
         ),
-        .init(
+        "97899964": .init(
             prefix: 978,
             group: 99964,
             name: "Nicaragua",
@@ -3155,7 +3131,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899965": .init(
             prefix: 978,
             group: 99965,
             name: "Macau",
@@ -3166,7 +3142,7 @@ extension ISBN {
                 .init(range: 630...999, length: 3)
             ]
         ),
-        .init(
+        "97899966": .init(
             prefix: 978,
             group: 99966,
             name: "Kuwait",
@@ -3178,7 +3154,7 @@ extension ISBN {
                 .init(range: 970...999, length: 3)
             ]
         ),
-        .init(
+        "97899967": .init(
             prefix: 978,
             group: 99967,
             name: "Paraguay",
@@ -3188,7 +3164,7 @@ extension ISBN {
                 .init(range: 600...999, length: 3)
             ]
         ),
-        .init(
+        "97899968": .init(
             prefix: 978,
             group: 99968,
             name: "Botswana",
@@ -3199,7 +3175,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "97899969": .init(
             prefix: 978,
             group: 99969,
             name: "Oman",
@@ -3210,7 +3186,7 @@ extension ISBN {
                 .init(range: 95...99, length: 2)
             ]
         ),
-        .init(
+        "97899970": .init(
             prefix: 978,
             group: 99970,
             name: "Haiti",
@@ -3220,7 +3196,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "97899971": .init(
             prefix: 978,
             group: 99971,
             name: "Myanmar",
@@ -3230,7 +3206,7 @@ extension ISBN {
                 .init(range: 850...999, length: 3)
             ]
         ),
-        .init(
+        "97899972": .init(
             prefix: 978,
             group: 99972,
             name: "Faroe Islands",
@@ -3240,7 +3216,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "97899973": .init(
             prefix: 978,
             group: 99973,
             name: "Mongolia",
@@ -3250,7 +3226,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899974": .init(
             prefix: 978,
             group: 99974,
             name: "Bolivia",
@@ -3264,7 +3240,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899975": .init(
             prefix: 978,
             group: 99975,
             name: "Tajikistan",
@@ -3275,7 +3251,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899976": .init(
             prefix: 978,
             group: 99976,
             name: "Srpska, Republic of",
@@ -3290,7 +3266,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "97899977": .init(
             prefix: 978,
             group: 99977,
             name: "Rwanda",
@@ -3301,7 +3277,7 @@ extension ISBN {
                 .init(range: 975...999, length: 3)
             ]
         ),
-        .init(
+        "97899978": .init(
             prefix: 978,
             group: 99978,
             name: "Mongolia",
@@ -3311,7 +3287,7 @@ extension ISBN {
                 .init(range: 700...999, length: 3)
             ]
         ),
-        .init(
+        "97899979": .init(
             prefix: 978,
             group: 99979,
             name: "Honduras",
@@ -3321,7 +3297,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899980": .init(
             prefix: 978,
             group: 99980,
             name: "Bhutan",
@@ -3331,7 +3307,7 @@ extension ISBN {
                 .init(range: 700...999, length: 3)
             ]
         ),
-        .init(
+        "97899981": .init(
             prefix: 978,
             group: 99981,
             name: "Macau",
@@ -3345,7 +3321,7 @@ extension ISBN {
                 .init(range: 750...999, length: 3)
             ]
         ),
-        .init(
+        "97899982": .init(
             prefix: 978,
             group: 99982,
             name: "Benin",
@@ -3355,7 +3331,7 @@ extension ISBN {
                 .init(range: 885...999, length: 3)
             ]
         ),
-        .init(
+        "97899983": .init(
             prefix: 978,
             group: 99983,
             name: "El Salvador",
@@ -3365,7 +3341,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "97899984": .init(
             prefix: 978,
             group: 99984,
             name: "Brunei Darussalam",
@@ -3375,7 +3351,7 @@ extension ISBN {
                 .init(range: 950...999, length: 3)
             ]
         ),
-        .init(
+        "97899985": .init(
             prefix: 978,
             group: 99985,
             name: "Tajikistan",
@@ -3385,7 +3361,7 @@ extension ISBN {
                 .init(range: 800...999, length: 3)
             ]
         ),
-        .init(
+        "97899986": .init(
             prefix: 978,
             group: 99986,
             name: "Myanmar",
@@ -3395,7 +3371,7 @@ extension ISBN {
                 .init(range: 950...999, length: 3)
             ]
         ),
-        .init(
+        "97899987": .init(
             prefix: 978,
             group: 99987,
             name: "Luxembourg",
@@ -3403,7 +3379,7 @@ extension ISBN {
                 .init(range: 700...999, length: 3)
             ]
         ),
-        .init(
+        "97899988": .init(
             prefix: 978,
             group: 99988,
             name: "Sudan",
@@ -3413,7 +3389,7 @@ extension ISBN {
                 .init(range: 800...824, length: 3)
             ]
         ),
-        .init(
+        "97899989": .init(
             prefix: 978,
             group: 99989,
             name: "Paraguay",
@@ -3423,7 +3399,7 @@ extension ISBN {
                 .init(range: 900...999, length: 3)
             ]
         ),
-        .init(
+        "97899990": .init(
             prefix: 978,
             group: 99990,
             name: "Ethiopia",
@@ -3433,7 +3409,7 @@ extension ISBN {
                 .init(range: 960...999, length: 3)
             ]
         ),
-        .init(
+        "97899992": .init(
             prefix: 978,
             group: 99992,
             name: "Oman",
@@ -3443,7 +3419,7 @@ extension ISBN {
                 .init(range: 950...999, length: 3)
             ]
         ),
-        .init(
+        "97899993": .init(
             prefix: 978,
             group: 99993,
             name: "Mauritius",
@@ -3453,7 +3429,7 @@ extension ISBN {
                 .init(range: 980...999, length: 3)
             ]
         ),
-        .init(
+        "97899994": .init(
             prefix: 978,
             group: 99994,
             name: "Haiti",
@@ -3463,7 +3439,7 @@ extension ISBN {
                 .init(range: 985...999, length: 3)
             ]
         ),
-        .init(
+        "97899995": .init(
             prefix: 978,
             group: 99995,
             name: "Seychelles",
@@ -3472,7 +3448,7 @@ extension ISBN {
                 .init(range: 975...999, length: 3)
             ]
         ),
-        .init(
+        "97910": .init(
             prefix: 979,
             group: 10,
             name: "France",
@@ -3484,7 +3460,7 @@ extension ISBN {
                 .init(range: 976000...999999, length: 6)
             ]
         ),
-        .init(
+        "97911": .init(
             prefix: 979,
             group: 11,
             name: "Korea, Republic",
@@ -3496,7 +3472,7 @@ extension ISBN {
                 .init(range: 950000...999999, length: 6)
             ]
         ),
-        .init(
+        "97912": .init(
             prefix: 979,
             group: 12,
             name: "Italy",
@@ -3507,7 +3483,7 @@ extension ISBN {
                 .init(range: 985000...999999, length: 6)
             ]
         ),
-        .init(
+        "97913": .init(
             prefix: 979,
             group: 13,
             name: "Spain",
@@ -3519,7 +3495,7 @@ extension ISBN {
                 .init(range: 990000...999999, length: 6)
             ]
         ),
-        .init(
+        "9798": .init(
             prefix: 979,
             group: 8,
             name: "United States",

@@ -32,9 +32,12 @@ struct ISBNRegistrationGroupsUpdater {
                 }
                 return ".init(range: \(lowerBound)...\(upperBound), length: \(rule.length))"
             }
+            guard rules.count > 0 else {
+                return nil
+            }
             let separator = ",\n".appending(String(repeating: " ", count: 4 * 4))
             return """
-                    .init(
+                    "\(prefix)\(groupNumber)": .init(
                         prefix: \(prefix),
                         group: \(groupNumber),
                         name: "\(group.agency)",
@@ -48,7 +51,7 @@ struct ISBNRegistrationGroupsUpdater {
         var result = "// \(isbnRangeMessage.messageSource)\n"
         result.append("// \(isbnRangeMessage.messageDate)\n\n")
         result.append("extension ISBN {\n")
-        result.append("    static let registrationGroups: [RegistrationGroup] = [\n")
+        result.append("    static let registrationGroups: [String: RegistrationGroup] = [\n")
         result.append("\(registrationGroups.joined(separator: ",\n"))\n")
         result.append("    ]\n")
         result.append("}")
@@ -82,7 +85,6 @@ struct ISBNRangeMessage: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         messageSource = try container.decode(String.self, forKey: .messageSource)
         messageDate = try container.decode(String.self, forKey: .messageDate)
-        
         let registrationGroupsContainer = try container.nestedContainer(keyedBy: RegistrationGroupsCodingKeys.self, forKey: .registrationGroups)
         registrationGroups = try registrationGroupsContainer.decode([Group].self, forKey: .groups)
     }
@@ -115,7 +117,6 @@ struct Group: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         prefix = try container.decode(String.self, forKey: .prefix)
         agency = try container.decode(String.self, forKey: .agency)
-
         let rulesContainer = try container.nestedContainer(keyedBy: RulesCodingKeys.self, forKey: .rules)
         rules = try rulesContainer.decode([Rule].self, forKey: .rule)
     }

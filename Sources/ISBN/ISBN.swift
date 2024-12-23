@@ -1,6 +1,7 @@
 import Foundation
 
-/// Represents an International Standard Book Number, the unique identification of books and other independent publications with editorial content.
+/// Represents an International Standard Book Number (ISBN), the globally recognized
+/// unique identifier for books and other editorial publications.
 
 public struct ISBN {
     /// The registration group name of the ISBN
@@ -15,9 +16,16 @@ public struct ISBN {
     /// The Global Trade Item Number
     public let gtin: Int
     
-    /// Create a ISBN with a given string representation
+    /// Creates a new `ISBN` instance from a given string representation.
     ///
-    /// Returns `nil` if the ISBN is not valid
+    /// - Important: If the provided string represents a valid ISBN-10 (e.g., `"1-4088-5589-5"`),
+    ///   it is automatically converted to the corresponding ISBN-13 (e.g., `"978-1-4088-5589-8"`).
+    ///   As a result, you will always have a 13-digit ISBN internally.
+    /// - Valid 13-digit ISBNs remain unchanged.
+    /// - Invalid or unrecognized ISBNs cause this initializer to return `nil`.
+    ///
+    /// - Parameter isbn: A string that may contain an ISBN-10 or ISBN-13. It can include optional hyphens or an `'X'` as the last digit in ISBN-10.
+    /// - Returns: A valid `ISBN` instance if the string is recognized as an ISBN-10 or ISBN-13; otherwise, `nil`.
     public init?(_ isbn: String) {
         guard Self.isValid(isbn) else {
             return nil
@@ -33,9 +41,11 @@ public struct ISBN {
         gtin = isbn.compactMap(\.wholeNumberValue).reduce(0, { $0 * 10 + $1 })
     }
     
-    /// Create a ISBN with a given GTIN representation
+    /// Creates a new `ISBN` instance from a given GTIN-13 integer.
     ///
-    /// Returns `nil` if the ISBN is not valid
+    /// - Parameter gtin: A 13-digit integer representing the Global Trade Item Number (GTIN-13).
+    ///   Must be valid according to ISBN rules; otherwise, this initializer returns `nil`.
+    /// - Returns: An `ISBN` instance if `gtin` is recognized as a valid GTIN-13; otherwise, `nil`.
     public init?(_ gtin: Int) {
         self.init(String(gtin))
     }
@@ -53,7 +63,7 @@ extension ISBN {
         return false
     }
     
-    /// Validates a given GTIN representation of an ISBN
+    /// Validates a given GTIN-13 representation of an ISBN
     public static func isValid(_ gtin: Int) -> Bool {
         isValid(String(gtin))
     }
@@ -71,7 +81,7 @@ extension ISBN {
         return elements.joined()
     }
     
-    /// Returns a string representation of an ISBN with hyphens from a given GTIN representation
+    /// Returns a string representation of an ISBN with hyphens from a given GTIN-13 representation
     public static func hyphenated(_ gtin: Int) -> String? {
         hyphenated(String(gtin))
     }
@@ -177,7 +187,9 @@ private extension Character {
     }
     
     var isbnValue: Int? {
-        if self == "X" { return 10 }
+        if self == "X" {
+            return 10
+        }
         return Int(String(self))
     }
 }
@@ -207,8 +219,14 @@ private extension String {
     }
 }
 
-private extension Array where Element == ISBN.RegistrationGroup {
+private extension Dictionary where Key == String, Value == ISBN.RegistrationGroup {
     func group(for isbn: String) -> ISBN.RegistrationGroup? {
-        first(where: { isbn.hasPrefix("\($0.prefix)\($0.group)") })
+        let sortedKeys = keys.sorted(by: { $0.count > $1.count })
+        for key in sortedKeys {
+            if isbn.hasPrefix(key) {
+                return self[key]
+            }
+        }
+        return nil
     }
 }
