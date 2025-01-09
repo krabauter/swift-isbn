@@ -1,5 +1,5 @@
 // International ISBN Agency
-// Mon, 23 Dec 2024 11:06:02 GMT
+// Thu, 9 Jan 2025 07:35:48 GMT
 
 extension ISBN {
     static let registrationGroups: [String: RegistrationGroup] = [
@@ -589,8 +589,7 @@ extension ISBN {
                 .init(range: 0...1, length: 2),
                 .init(range: 250...299, length: 3),
                 .init(range: 300...302, length: 3),
-                .init(range: 5000...5129, length: 4),
-                .init(range: 5200...6149, length: 4),
+                .init(range: 5000...6149, length: 4),
                 .init(range: 80000...81824, length: 5),
                 .init(range: 83000...89999, length: 5),
                 .init(range: 900000...902449, length: 6),
