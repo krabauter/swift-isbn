@@ -1,5 +1,5 @@
 // International ISBN Agency
-// Fri, 7 Feb 2025 06:51:00 GMT
+// Wed, 5 Mar 2025 12:30:20 GMT
 
 extension ISBN {
     static let registrationGroups: [String: RegistrationGroup] = [
@@ -468,7 +468,7 @@ extension ISBN {
                 .init(range: 0...4, length: 2),
                 .init(range: 200...249, length: 3),
                 .init(range: 5000...6899, length: 4),
-                .init(range: 93000...99999, length: 5)
+                .init(range: 92000...99999, length: 5)
             ]
         ),
         "978625": .init(
@@ -1648,7 +1648,7 @@ extension ISBN {
                 .init(range: 0...0, length: 1),
                 .init(range: 30...34, length: 2),
                 .init(range: 600...699, length: 3),
-                .init(range: 9700...9999, length: 4)
+                .init(range: 9625...9999, length: 4)
             ]
         ),
         "9789918": .init(
@@ -3446,7 +3446,7 @@ extension ISBN {
             group: 99995,
             name: "Seychelles",
             rules: [
-                .init(range: 50...52, length: 2),
+                .init(range: 50...55, length: 2),
                 .init(range: 975...999, length: 3)
             ]
         ),
