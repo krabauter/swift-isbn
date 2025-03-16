@@ -1,5 +1,5 @@
 // International ISBN Agency
-// Wed, 5 Mar 2025 12:30:20 GMT
+// Sun, 16 Mar 2025 09:56:10 GMT
 
 extension ISBN {
     static let registrationGroups: [String: RegistrationGroup] = [
@@ -3450,6 +3450,16 @@ extension ISBN {
                 .init(range: 975...999, length: 3)
             ]
         ),
+        "97899996": .init(
+            prefix: 978,
+            group: 99996,
+            name: "Macau",
+            rules: [
+                .init(range: 0...1, length: 1),
+                .init(range: 40...59, length: 2),
+                .init(range: 900...999, length: 3)
+            ]
+        ),
         "97910": .init(
             prefix: 979,
             group: 10,
@@ -3504,6 +3514,7 @@ extension ISBN {
             rules: [
                 .init(range: 200...229, length: 3),
                 .init(range: 230...239, length: 3),
+                .init(range: 2800...2999, length: 4),
                 .init(range: 3000...3199, length: 4),
                 .init(range: 3200...3499, length: 4),
                 .init(range: 3500...8849, length: 4),
