@@ -1,5 +1,5 @@
 // International ISBN Agency
-// Sun, 16 Mar 2025 09:56:10 GMT
+// Wed, 16 Apr 2025 08:44:08 BST
 
 extension ISBN {
     static let registrationGroups: [String: RegistrationGroup] = [
@@ -1380,7 +1380,8 @@ extension ISBN {
             rules: [
                 .init(range: 0...199, length: 3),
                 .init(range: 2000...2999, length: 4),
-                .init(range: 30000...69999, length: 5),
+                .init(range: 30000...69499, length: 5),
+                .init(range: 695...699, length: 3),
                 .init(range: 765...799, length: 3),
                 .init(range: 8000...8999, length: 4),
                 .init(range: 900...999, length: 3)
@@ -1460,7 +1461,12 @@ extension ISBN {
             group: 984,
             name: "Bangladesh",
             rules: [
-                .init(range: 0...38, length: 2),
+                .init(range: 0...21, length: 2),
+                .init(range: 220...224, length: 3),
+                .init(range: 2250...2599, length: 4),
+                .init(range: 26...28, length: 2),
+                .init(range: 29000...29999, length: 5),
+                .init(range: 30...38, length: 2),
                 .init(range: 3900...3999, length: 4),
                 .init(range: 400...799, length: 3),
                 .init(range: 8000...8999, length: 4),
@@ -1544,6 +1550,16 @@ extension ISBN {
                 .init(range: 95000...99999, length: 5)
             ]
         ),
+        "9789907": .init(
+            prefix: 978,
+            group: 9907,
+            name: "Ecuador",
+            rules: [
+                .init(range: 0...0, length: 1),
+                .init(range: 50...64, length: 2),
+                .init(range: 800...874, length: 3)
+            ]
+        ),
         "9789908": .init(
             prefix: 978,
             group: 9908,
@@ -1570,9 +1586,9 @@ extension ISBN {
             group: 9910,
             name: "Uzbekistan",
             rules: [
-                .init(range: 1...9, length: 2),
-                .init(range: 630...799, length: 3),
-                .init(range: 8600...9999, length: 4)
+                .init(range: 1...12, length: 2),
+                .init(range: 550...799, length: 3),
+                .init(range: 8000...9999, length: 4)
             ]
         ),
         "9789911": .init(
@@ -3458,6 +3474,16 @@ extension ISBN {
                 .init(range: 0...1, length: 1),
                 .init(range: 40...59, length: 2),
                 .init(range: 900...999, length: 3)
+            ]
+        ),
+        "97899997": .init(
+            prefix: 978,
+            group: 99997,
+            name: "Srpska, Republic of",
+            rules: [
+                .init(range: 0...0, length: 1),
+                .init(range: 40...54, length: 2),
+                .init(range: 950...999, length: 3)
             ]
         ),
         "97910": .init(
