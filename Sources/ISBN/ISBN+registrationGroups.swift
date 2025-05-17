@@ -1,5 +1,5 @@
 // International ISBN Agency
-// Wed, 16 Apr 2025 08:44:08 BST
+// Sat, 17 May 2025 14:04:57 BST
 
 extension ISBN {
     static let registrationGroups: [String: RegistrationGroup] = [
@@ -342,7 +342,8 @@ extension ISBN {
                 .init(range: 300...399, length: 3),
                 .init(range: 4000...4499, length: 4),
                 .init(range: 45000...49999, length: 5),
-                .init(range: 5000...5224, length: 4)
+                .init(range: 5000...5299, length: 4),
+                .init(range: 99000...99999, length: 5)
             ]
         ),
         "978613": .init(
@@ -494,7 +495,7 @@ extension ISBN {
                 .init(range: 0...4, length: 2),
                 .init(range: 300...499, length: 3),
                 .init(range: 7000...7999, length: 4),
-                .init(range: 95000...99999, length: 5)
+                .init(range: 92500...99999, length: 5)
             ]
         ),
         "978627": .init(
@@ -1424,8 +1425,7 @@ extension ISBN {
                 .init(range: 3000...3099, length: 4),
                 .init(range: 310...399, length: 3),
                 .init(range: 4000...5999, length: 4),
-                .init(range: 94...94, length: 2),
-                .init(range: 96...99, length: 2)
+                .init(range: 94...99, length: 2)
             ]
         ),
         "978982": .init(
@@ -3403,6 +3403,7 @@ extension ISBN {
             name: "Sudan",
             rules: [
                 .init(range: 0...0, length: 1),
+                .init(range: 10...10, length: 2),
                 .init(range: 50...54, length: 2),
                 .init(range: 800...824, length: 3)
             ]
@@ -3484,6 +3485,14 @@ extension ISBN {
                 .init(range: 0...0, length: 1),
                 .init(range: 40...54, length: 2),
                 .init(range: 950...999, length: 3)
+            ]
+        ),
+        "97899998": .init(
+            prefix: 978,
+            group: 99998,
+            name: "Namibia",
+            rules: [
+                .init(range: 80...89, length: 2)
             ]
         ),
         "97910": .init(
