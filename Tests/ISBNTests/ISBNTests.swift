@@ -229,7 +229,8 @@ struct CodableTests {
     @Test("Decodes ISBN-10s and ISBN-13s", arguments: ["978-1-4088-5589-8", "9781408855898", "1-4088-5589-5"])
     func decodes(string: String) throws {
         let book = try JSONDecoder().decode(Book.self, from: Data(#"{"isbn":"\#(string)"}"#.utf8))
-        #expect(book == Book(isbn: try ISBN(parsing: "9781408855898")))
+        let isbn = try ISBN(parsing: "9781408855898")
+        #expect(book == Book(isbn: isbn))
     }
 
     @Test("The decoding error contains the reason")

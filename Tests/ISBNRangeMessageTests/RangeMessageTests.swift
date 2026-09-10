@@ -25,10 +25,10 @@ struct RangeMessageTests {
     @Test("Keeps unassigned rules")
     func keepsUnassignedRules() {
         #expect(message.groups[0].rules == [
-            .init(range: "0000000-0999999", length: 2),
-            .init(range: "1000000-3999999", length: 0),
-            .init(range: "4000000-5499999", length: 4),
-            .init(range: "5500000-9999999", length: 5)
+            RangeMessage.Rule(range: "0000000-0999999", length: 2),
+            RangeMessage.Rule(range: "1000000-3999999", length: 0),
+            RangeMessage.Rule(range: "4000000-5499999", length: 4),
+            RangeMessage.Rule(range: "5500000-9999999", length: 5)
         ])
     }
 
