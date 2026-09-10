@@ -1,133 +1,132 @@
-import AsyncHTTPClient
 import Foundation
-import XMLCoder
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
+import ISBNRangeMessage
 
+/// Updates `Data/RangeMessage.xml` and the range table of the `ISBN` library if the
+/// International ISBN Agency changed the registration ranges.
 @main
 struct ISBNRegistrationGroupsUpdater {
-    static func main() async throws {
-        let request = HTTPClientRequest(url: "https://www.isbn-international.org/export_rangemessage.xml")
-        let response = try await HTTPClient.shared.execute(request, timeout: .seconds(30))
-        guard response.status == .ok else {
-            throw ISBNRegistrationGroupsUpdaterError.invalidResponse
+    static let rangeMessageURL = URL(string: "https://www.isbn-international.org/export_rangemessage.xml")!
+    static let rangeMessagePath = "Data/RangeMessage.xml"
+    static let rangeTablePath = "Sources/ISBN/RangeTable+Entries.swift"
+
+    static func main() {
+        do {
+            try run(Options(arguments: Array(CommandLine.arguments.dropFirst())))
+        } catch {
+            FileHandle.standardError.write(Data("error: \(error)\n".utf8))
+            exit(1)
         }
-        
-        let body = try await response.body.collect(upTo: 1024 * 1024)
-        let isbnRangeMessage = try XMLDecoder().decode(ISBNRangeMessage.self, from: .init(buffer: body))
-        
-        let registrationGroups: [String] = isbnRangeMessage.registrationGroups.compactMap { group -> String? in
-            let prefixComponents = group.prefix.components(separatedBy: "-")
-            guard let prefix = prefixComponents.first, let groupNumber = prefixComponents.last else {
-                return nil
-            }
-            let rules: [String] = group.rules.compactMap { rule in
-                guard rule.length > 0 else {
-                    return nil
-                }
-                let rangeComponents = rule.range.components(separatedBy: "-")
-                guard let lowerBoundString = rangeComponents.first?.prefix(rule.length),
-                      let lowerBound = Int(lowerBoundString),
-                      let upperBoundString = rangeComponents.last?.prefix(rule.length),
-                      let upperBound = Int(upperBoundString) else {
-                    return nil
-                }
-                return ".init(range: \(lowerBound)...\(upperBound), length: \(rule.length))"
-            }
-            guard rules.count > 0 else {
-                return nil
-            }
-            let separator = ",\n".appending(String(repeating: " ", count: 4 * 4))
-            return """
-                    "\(prefix)\(groupNumber)": .init(
-                        prefix: \(prefix),
-                        group: \(groupNumber),
-                        name: "\(group.agency)",
-                        rules: [
-                            \(rules.joined(separator: separator))
-                        ]
-                    )
-            """
+    }
+
+    static func run(_ options: Options) throws {
+        if options.showHelp {
+            print(Options.usage)
+            return
         }
-        
-        var result = "// \(isbnRangeMessage.messageSource)\n"
-        result.append("// \(isbnRangeMessage.messageDate)\n\n")
-        result.append("extension ISBN {\n")
-        result.append("    static let registrationGroups: [String: RegistrationGroup] = [\n")
-        result.append("\(registrationGroups.joined(separator: ",\n"))\n")
-        result.append("    ]\n")
-        result.append("}")
-        
-        var filePath = FileManager.default.currentDirectoryPath
-        filePath.append("/Sources/ISBN/ISBN+RegistrationGroups.swift")
-        try result.write(to: URL(fileURLWithPath: filePath), atomically: true, encoding: .utf8)
+        guard FileManager.default.fileExists(atPath: "Package.swift") else {
+            throw UpdaterError("Run the updater from the root directory of the package.")
+        }
+
+        if options.regenerate {
+            let message = try RangeMessage(xml: Data(contentsOf: URL(fileURLWithPath: rangeMessagePath)))
+            try RangeTableSource.generate(from: message).write(toFile: rangeTablePath, atomically: true, encoding: .utf8)
+            print("Regenerated \(rangeTablePath) from \(rangeMessagePath).")
+            return
+        }
+
+        let xml = RangeMessage.normalizingLineEndings(of: try load(options.input))
+        let message = try RangeMessage(xml: xml)
+        // Generating the range table validates the range message before any file is written.
+        let rangeTable = try RangeTableSource.generate(from: message)
+
+        var baseline = RangeMessage(groups: [])
+        if FileManager.default.fileExists(atPath: rangeMessagePath) {
+            baseline = try RangeMessage(xml: Data(contentsOf: URL(fileURLWithPath: rangeMessagePath)))
+        }
+        let diff = RangeMessageDiff(from: baseline, to: message)
+        guard !diff.isEmpty else {
+            print("The ISBN ranges are up to date.")
+            return
+        }
+
+        try FileManager.default.createDirectory(atPath: "Data", withIntermediateDirectories: true)
+        try xml.write(to: URL(fileURLWithPath: rangeMessagePath))
+        try rangeTable.write(toFile: rangeTablePath, atomically: true, encoding: .utf8)
+        if let path = options.releaseNotesPath {
+            try diff.releaseNotes.write(toFile: path, atomically: true, encoding: .utf8)
+        }
+        if let path = options.commitMessagePath {
+            try diff.commitMessage.write(toFile: path, atomically: true, encoding: .utf8)
+        }
+        print(diff.commitMessage)
+    }
+
+    static func load(_ input: String) throws -> Data {
+        if let url = URL(string: input), url.scheme == "https" || url.scheme == "http" {
+            return try Data(contentsOf: url)
+        }
+        return try Data(contentsOf: URL(fileURLWithPath: input))
     }
 }
 
-enum ISBNRegistrationGroupsUpdaterError: Error {
-    case invalidResponse
-}
+struct Options {
+    static let usage = """
+        USAGE: swift run ISBNRegistrationGroupsUpdater [options]
 
-struct ISBNRangeMessage: Decodable {
-    let messageSource: String
-    let messageDate: String
-    let registrationGroups: [Group]
+        Updates Data/RangeMessage.xml and Sources/ISBN/RangeTable+Entries.swift if the
+        International ISBN Agency changed the registration ranges. Run it from the
+        root directory of the package.
 
-    enum CodingKeys: String, CodingKey {
-        case messageSource = "MessageSource"
-        case messageDate = "MessageDate"
-        case registrationGroups = "RegistrationGroups"
-    }
-    
-    enum RegistrationGroupsCodingKeys: String, CodingKey {
-        case groups = "Group"
-    }
+        OPTIONS:
+          --input <path-or-url>     Read the range message from a file or URL instead of
+                                    \(ISBNRegistrationGroupsUpdater.rangeMessageURL.absoluteString)
+          --release-notes <path>    Write release notes in Markdown if the ranges changed
+          --commit-message <path>   Write a commit message if the ranges changed
+          --regenerate              Regenerate the range table from Data/RangeMessage.xml
+          -h, --help                Show this help
+        """
 
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        messageSource = try container.decode(String.self, forKey: .messageSource)
-        messageDate = try container.decode(String.self, forKey: .messageDate)
-        let registrationGroupsContainer = try container.nestedContainer(keyedBy: RegistrationGroupsCodingKeys.self, forKey: .registrationGroups)
-        registrationGroups = try registrationGroupsContainer.decode([Group].self, forKey: .groups)
-    }
-}
+    var input = ISBNRegistrationGroupsUpdater.rangeMessageURL.absoluteString
+    var releaseNotesPath: String?
+    var commitMessagePath: String?
+    var regenerate = false
+    var showHelp = false
 
-struct RegistrationGroups: Decodable {
-    let groups: [Group]
-
-    enum CodingKeys: String, CodingKey {
-        case groups = "Group"
-    }
-}
-
-struct Group: Decodable {
-    let prefix: String
-    let agency: String
-    let rules: [Rule]
-
-    enum CodingKeys: String, CodingKey {
-        case prefix = "Prefix"
-        case agency = "Agency"
-        case rules = "Rules"
-    }
-    
-    enum RulesCodingKeys: String, CodingKey {
-        case rule = "Rule"
+    init(arguments: [String]) throws {
+        var arguments = arguments[...]
+        while let argument = arguments.popFirst() {
+            switch argument {
+            case "--input":
+                input = try Self.value(of: argument, from: &arguments)
+            case "--release-notes":
+                releaseNotesPath = try Self.value(of: argument, from: &arguments)
+            case "--commit-message":
+                commitMessagePath = try Self.value(of: argument, from: &arguments)
+            case "--regenerate":
+                regenerate = true
+            case "-h", "--help":
+                showHelp = true
+            default:
+                throw UpdaterError("Unknown argument '\(argument)'.\n\n\(Self.usage)")
+            }
+        }
     }
 
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        prefix = try container.decode(String.self, forKey: .prefix)
-        agency = try container.decode(String.self, forKey: .agency)
-        let rulesContainer = try container.nestedContainer(keyedBy: RulesCodingKeys.self, forKey: .rules)
-        rules = try rulesContainer.decode([Rule].self, forKey: .rule)
+    private static func value(of option: String, from arguments: inout ArraySlice<String>) throws -> String {
+        guard let value = arguments.popFirst() else {
+            throw UpdaterError("Missing value for \(option).")
+        }
+        return value
     }
 }
 
-struct Rule: Decodable {
-    let range: String
-    let length: Int
+struct UpdaterError: Error, CustomStringConvertible {
+    var description: String
 
-    enum CodingKeys: String, CodingKey {
-        case range = "Range"
-        case length = "Length"
+    init(_ description: String) {
+        self.description = description
     }
 }

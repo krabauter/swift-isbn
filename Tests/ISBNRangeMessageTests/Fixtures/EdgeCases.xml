@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE ISBNRangeMessage [
+<!ELEMENT ISBNRangeMessage (MessageSource?, MessageSerialNumber?, MessageDate, EAN.UCCPrefixes, RegistrationGroups) >
+<!ELEMENT MessageSource (#PCDATA) >
+<!ELEMENT MessageSerialNumber (#PCDATA) >
+<!ELEMENT MessageDate (#PCDATA) >
+<!ELEMENT EAN.UCCPrefixes (EAN.UCC+) >
+<!ELEMENT RegistrationGroups (Group+) >
+<!ELEMENT EAN.UCC (Prefix, Agency, Rules) >
+<!ELEMENT Group (Prefix, Agency, Rules) >
+<!ELEMENT Rules (Rule+) >
+<!ELEMENT Rule (Range, Length) >
+<!ELEMENT Prefix (#PCDATA) >
+<!ELEMENT Agency (#PCDATA) >
+<!ELEMENT Range (#PCDATA) >
+<!ELEMENT Length (#PCDATA) >
+]>
+<ISBNRangeMessage>
+  <MessageSource>International ISBN Agency</MessageSource>
+  <MessageSerialNumber>00000000-0000-0000-0000-000000000000</MessageSerialNumber>
+  <MessageDate>Thu, 10 Sep 2026 09:23:46 BST</MessageDate>
+  <EAN.UCCPrefixes>
+    <EAN.UCC>
+      <Prefix>978</Prefix>
+      <Agency>International ISBN Agency</Agency>
+      <Rules>
+        <Rule>
+          <Range>0000000-5999999</Range>
+          <Length>1</Length>
+        </Rule>
+      </Rules>
+    </EAN.UCC>
+  </EAN.UCCPrefixes>
+  <RegistrationGroups>
+    <Group>
+      <Prefix>978-1</Prefix>
+      <Agency>English language</Agency>
+      <Rules>
+        <Rule>
+          <Range>0000000-0999999</Range>
+          <Length>2</Length>
+        </Rule>
+        <Rule>
+          <Range>1000000-3999999</Range>
+          <Length>0</Length>
+        </Rule>
+        <Rule>
+          <Range>4000000-5499999</Range>
+          <Length>4</Length>
+        </Rule>
+        <Rule>
+          <Range>5500000-9999999</Range>
+          <Length>5</Length>
+        </Rule>
+      </Rules>
+    </Group>
+    <Group>
+      <Prefix>978-7</Prefix>
+      <Agency>China, People&apos;s Republic</Agency>
+      <Rules>
+        <Rule>
+          <Range>0000000-0999999</Range>
+          <Length>2</Length>
+        </Rule>
+        <Rule>
+          <Range>1000000-4999999</Range>
+          <Length>3</Length>
+        </Rule>
+      </Rules>
+    </Group>
+    <Group>
+      <Prefix>978-611</Prefix>
+      <Agency>Thailand</Agency>
+      <Rules>
+        <Rule>
+          <Range>0000000-9999999</Range>
+          <Length>0</Length>
+        </Rule>
+      </Rules>
+    </Group>
+    <Group>
+      <Prefix>978-99904</Prefix>
+      <Agency>
+        Cura&#231;ao
+      </Agency>
+      <Rules>
+        <Rule>
+          <Range>0000000-5999999</Range>
+          <Length>1</Length>
+        </Rule>
+        <Rule>
+          <Range>6000000-8999999</Range>
+          <Length>2</Length>
+        </Rule>
+        <Rule>
+          <Range>9000000-9999999</Range>
+          <Length>3</Length>
+        </Rule>
+      </Rules>
+    </Group>
+  </RegistrationGroups>
+</ISBNRangeMessage>

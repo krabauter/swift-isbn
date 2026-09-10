@@ -3,3 +3,5 @@
 .index-build/
 .swiftpm
 Packages
+DerivedData/
+.derived-data-log-*

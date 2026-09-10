@@ -1,0 +1,68 @@
+name: Update ISBN ranges
+
+on:
+  schedule:
+    # Every Monday at 05:17 UTC
+    - cron: "17 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-ranges
+
+jobs:
+  update:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Update ranges
+        run: >
+          swift run ISBNRegistrationGroupsUpdater
+          --release-notes "$RUNNER_TEMP/release-notes.md"
+          --commit-message "$RUNNER_TEMP/commit-message.txt"
+
+      - name: Detect changes
+        id: changes
+        run: git diff --quiet || echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Find latest release
+        if: steps.changes.outputs.changed == 'true'
+        id: release
+        run: |
+          latest=$(git tag --list | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -t. -k1,1n -k2,2n -k3,3n | tail -n 1)
+          echo "latest=$latest" >> "$GITHUB_OUTPUT"
+          echo "next=${latest%.*}.$(( ${latest##*.} + 1 ))" >> "$GITHUB_OUTPUT"
+
+      - name: Check for unreleased library changes
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          LATEST: ${{ steps.release.outputs.latest }}
+        run: |
+          changes=$(git diff --name-only "$LATEST" HEAD -- Package.swift Sources/ISBN ':(exclude)Sources/ISBN/RangeTable+Entries.swift')
+          if [ -n "$changes" ]; then
+            echo "::error::The library changed since $LATEST. Release these changes before ranges can be released automatically:"
+            echo "$changes"
+            exit 1
+          fi
+
+      - name: Test
+        if: steps.changes.outputs.changed == 'true'
+        run: swift test
+
+      - name: Commit, tag, and release
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NEXT: ${{ steps.release.outputs.next }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit --all --file "$RUNNER_TEMP/commit-message.txt"
+          git tag "$NEXT"
+          git push origin HEAD "$NEXT"
+          gh release create "$NEXT" --title "$NEXT" --notes-file "$RUNNER_TEMP/release-notes.md"
