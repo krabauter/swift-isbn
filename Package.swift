@@ -6,33 +6,21 @@ let package = Package(
     name: "ISBN",
     platforms: [.macOS(.v10_15), .iOS(.v13), .tvOS(.v13), .watchOS(.v6)],
     products: [.library(name: "ISBN", targets: ["ISBN"])],
-    dependencies: [
-        .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.23.0"),
-        .package(url: "https://github.com/CoreOffice/XMLCoder", from: "0.17.0")
-    ],
     targets: [
-        .target(
-            name: "ISBN",
-            swiftSettings: swiftSettings
-        ),
+        .target(name: "ISBN"),
+        .target(name: "ISBNRangeMessage"),
         .executableTarget(
             name: "ISBNRegistrationGroupsUpdater",
-            dependencies: [
-                .product(name: "AsyncHTTPClient", package: "async-http-client"),
-                .product(name: "XMLCoder", package: "XMLCoder")
-            ],
-            path: "Sources/ISBNRegistrationGroupsUpdater",
-            swiftSettings: swiftSettings
+            dependencies: ["ISBNRangeMessage"]
         ),
         .testTarget(
             name: "ISBNTests",
-            dependencies: ["ISBN"],
-            swiftSettings: swiftSettings
+            dependencies: ["ISBN"]
+        ),
+        .testTarget(
+            name: "ISBNRangeMessageTests",
+            dependencies: ["ISBN", "ISBNRangeMessage"],
+            exclude: ["Fixtures"]
         )
     ]
 )
-
-var swiftSettings: [SwiftSetting] = [
-    .swiftLanguageMode(.v6),
-    .enableExperimentalFeature("StrictConcurrency=complete")
-]
