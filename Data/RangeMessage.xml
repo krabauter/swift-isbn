@@ -17,8 +17,8 @@
 ]>
 <ISBNRangeMessage>
   <MessageSource>International ISBN Agency</MessageSource>
-  <MessageSerialNumber>b70edb50-2517-400e-8508-6eee94a27d1d</MessageSerialNumber>
-  <MessageDate>Mon, 19 Oct 2026 10:45:16 UTC</MessageDate>
+  <MessageSerialNumber>1eb683a4-6afb-4874-ae3b-0154d67bed75</MessageSerialNumber>
+  <MessageDate>Mon, 26 Oct 2026 11:06:02 UTC</MessageDate>
   <EAN.UCCPrefixes>
     <EAN.UCC>
       <Prefix>978</Prefix>
@@ -1463,8 +1463,12 @@
           <Length>2</Length>
         </Rule>
         <Rule>
-          <Range>0200000-3199999</Range>
+          <Range>0200000-2999999</Range>
           <Length>0</Length>
+        </Rule>
+        <Rule>
+          <Range>3000000-3199999</Range>
+          <Length>5</Length>
         </Rule>
         <Rule>
           <Range>3200000-4429999</Range>
@@ -2011,8 +2015,12 @@
       <Agency>India</Agency>
       <Rules>
         <Rule>
-          <Range>0000000-1699999</Range>
+          <Range>0000000-1599999</Range>
           <Length>2</Length>
+        </Rule>
+        <Rule>
+          <Range>1600000-1699999</Range>
+          <Length>5</Length>
         </Rule>
         <Rule>
           <Range>1700000-1799999</Range>
@@ -2027,7 +2035,15 @@
           <Length>5</Length>
         </Rule>
         <Rule>
-          <Range>2000000-6479999</Range>
+          <Range>2000000-6249999</Range>
+          <Length>3</Length>
+        </Rule>
+        <Rule>
+          <Range>6250000-6469999</Range>
+          <Length>4</Length>
+        </Rule>
+        <Rule>
+          <Range>6470000-6479999</Range>
           <Length>3</Length>
         </Rule>
         <Rule>
@@ -5423,8 +5439,20 @@
           <Length>3</Length>
         </Rule>
         <Rule>
-          <Range>8000000-9799999</Range>
+          <Range>8000000-8699999</Range>
           <Length>4</Length>
+        </Rule>
+        <Rule>
+          <Range>8700000-8999999</Range>
+          <Length>2</Length>
+        </Rule>
+        <Rule>
+          <Range>9000000-9299999</Range>
+          <Length>0</Length>
+        </Rule>
+        <Rule>
+          <Range>9300000-9799999</Range>
+          <Length>3</Length>
         </Rule>
         <Rule>
           <Range>9800000-9999999</Range>
@@ -9023,15 +9051,15 @@
           <Length>0</Length>
         </Rule>
         <Rule>
-          <Range>5000000-5599999</Range>
+          <Range>5000000-5899999</Range>
           <Length>2</Length>
         </Rule>
         <Rule>
-          <Range>5600000-9749999</Range>
+          <Range>5900000-9599999</Range>
           <Length>0</Length>
         </Rule>
         <Rule>
-          <Range>9750000-9999999</Range>
+          <Range>9600000-9999999</Range>
           <Length>3</Length>
         </Rule>
       </Rules>
@@ -9049,15 +9077,15 @@
           <Length>0</Length>
         </Rule>
         <Rule>
-          <Range>4000000-5999999</Range>
+          <Range>4000000-7499999</Range>
           <Length>2</Length>
         </Rule>
         <Rule>
-          <Range>6000000-8999999</Range>
+          <Range>7500000-8499999</Range>
           <Length>0</Length>
         </Rule>
         <Rule>
-          <Range>9000000-9999999</Range>
+          <Range>8500000-9999999</Range>
           <Length>3</Length>
         </Rule>
       </Rules>
