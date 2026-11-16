@@ -1,6 +1,6 @@
 // This file is generated from Data/RangeMessage.xml by ISBNRegistrationGroupsUpdater. Do not edit it.
 // International ISBN Agency
-// Mon, 9 Nov 2026 13:53:00 UTC
+// Mon, 16 Nov 2026 13:37:41 UTC
 
 extension RangeTable {
     static let agencies: [String] = [
@@ -465,7 +465,7 @@ extension RangeTable {
         (978_624_485_000, 978_624_719_999, 3, 4, 24),
         (978_624_910_000, 978_624_999_999, 3, 5, 24),
         // 978-625 Türkiye
-        (978_625_000_000, 978_625_019_999, 3, 2, 10),
+        (978_625_000_000, 978_625_029_999, 3, 2, 10),
         (978_625_300_000, 978_625_319_999, 3, 5, 10),
         (978_625_320_000, 978_625_442_999, 3, 3, 10),
         (978_625_443_000, 978_625_444_999, 3, 5, 10),
